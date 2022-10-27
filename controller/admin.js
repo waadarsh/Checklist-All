@@ -14,7 +14,7 @@ const connectionString = 'postgresql://postgres:nissan@localhost:5432/rnaipl';
 const pool = new Pool({connectionString,});
 
 exports.getAdmin = function(req, res) { 
-    res.sendFile(path.join(__dirname + '/html/index.html'));
+    res.sendFile(path.join(__dirname, '../html/index.html'));
  };
 
  exports.postAdmin = function(req, res) { 
