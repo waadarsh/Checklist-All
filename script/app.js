@@ -89,7 +89,7 @@ publishButton.addEventListener("click", function() {
     try {
         const ourRequest = $.ajax({
             method: "POST",
-            url: "http://localhost:3000/admin/admin",
+            url: "http://localhost:3000/admin/adminPanel",
             contentType: "application/json",
             data: JSON.stringify(finalJSON)
 

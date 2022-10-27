@@ -3,7 +3,7 @@ var router = express.Router();
 
 const adminController = require("../controller/admin");
 
-router.get("/admin", adminController.getAdmin);
-router.post("/admin", adminController.postAdmin);
+router.get("/adminPanel", adminController.getAdmin);
+router.post("/adminPanel", adminController.postAdmin);
 
 module.exports = router;
