@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Checklist</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../Admin/styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <img id="logoImg" src="../static/renault_nissan_logo.png">
+
+    <h2>CREATING A NEW CHECKLIST</h2>
+
+    <div class="checklist-container">
+
+        <div class="checklist-header-container">
+            <div class="checklist-name-container">
+                <label for="checklist-name-input">TEMPLATE NAME</label>
+                <input type="text" class="checklist-name-input" id="checklist-name-input" class="checklist-name-input"
+                    placeholder="   Type here">
+            </div>
+            <div class="station-name-container">
+                <label for="station-name-input">STATION NAME</label>
+                <input type="text" class="station-name-input" id="station-name-input" class="station-name-input"
+                    placeholder="   Type here">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="component-panel-container">
+        <h3 style="color: #ff5f00">COMPONENT SHELF</h3>
+    </div>
+
+    <div class="edit-panel-container"></div>
+    <!-- <div id="edit2" class="edit-panel-container"></div> -->
+
+    <!-- <input type="text">
+        <button id="icn" onclick="edit()" ><span class="material-symbols-outlined">check_circle</span></button> -->
+
+
+    <div class="add-work-instruction">
+        <button class="add-work-instruction-button" id="add-work-instruction">+</button>
+    </div>
+
+
+    <div class="publish-json-container">
+        <button class="publish-button" id="publish-button">PUBLISH</button>
+    </div>
+
+    <script src="../script/app.js" type="module"></script>
+    <script src="../script/checklistContainer.js" type="module"></script>
+    <script src="../script/component.js" type="module"></script>
+    <script src="../script/createjson.js" type="module"></script>
+
+</body>
+
+</html>
