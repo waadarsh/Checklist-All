@@ -13,12 +13,13 @@
     "body-parser": "^1.20.1",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-validator": "^6.14.2",
     "http-errors": "^2.0.0",
     "pg": "^8.8.0",
     "pg-promise": "^10.12.1",
+    "querystring": "^0.2.1",
     "utf8": "^3.0.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/waadarsh/Checklist-All.git"
