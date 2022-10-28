@@ -1,0 +1,25 @@
+body { padding:2%; }
+        .line {
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px solid #707070;
+            margin: 2% 0.1%;
+        }
+        .pad {
+            padding:0
+        }
+        .segment .textArea{
+            height: 80%;
+            width: 100%;
+            margin-top:-1.5%
+        }
+        .segment .textInput {
+            width: 100%;
+            height: 4.5em; 
+            margin-top:-9.5%;
+        }
+        .button .material-symbols-outlined {
+            width :5em;
+            padding: 0%;
+        }
+
