@@ -1,12 +1,12 @@
 {
-  "name": "image-upload",
-  "version": "1.0.0",
+  "name": "checklist-all",
+  "version": "1.6.5",
   "description": "image upload",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Aadarsh Unni Wilson, Kishore Ramanujam, Nirmal Abraham",
   "license": "ISC",
   "dependencies": {
     "base-64": "^1.0.0",
@@ -17,5 +17,14 @@
     "pg": "^8.8.0",
     "pg-promise": "^10.12.1",
     "utf8": "^3.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waadarsh/Checklist-All.git"
+  },
+  "bugs": {
+    "url": "https://github.com/waadarsh/Checklist-All/issues"
+  },
+  "homepage": "https://github.com/waadarsh/Checklist-All#readme"
 }
