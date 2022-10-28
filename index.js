@@ -7,7 +7,11 @@ const createError = require("http-errors");
 const PORT = 3000;
 
 const adminRouter = require("./routes/admin");
+const operatorRouter = require("./routes/operator");
 const { application } = require('express');
+
+app.set("views", path.resolve(__dirname,"views"));
+app.set("view engine", "ejs");
 
 const app = express();
 
@@ -16,10 +20,12 @@ app.use("/static", express.static("static"));
 app.use("/script", express.static("script"));
 app.use("/html", express.static("html"));
 
+app.use(bodyParser.json());
 app.use(bodyParser.text());
-app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/admin", adminRouter);
+app.use("/operator", operatorRouter);
 
 app.use(function(req, res, next) {
     next(createError(404));
