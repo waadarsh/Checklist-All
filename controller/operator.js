@@ -1,7 +1,8 @@
 var pgp = require("pg-promise")();
 const { publicDecrypt } = require("crypto");
 var queryString = require("querystring");
-const db = pgp('postgresql://postgres:air2020@localhost:5432/rnaipl');
+// const db = pgp('postgresql://postgres:air2020@localhost:5432/rnaipl');
+const db = pgp('postgresql://postgres:nissan@localhost:5432/rnaipl');
 var chklstId = null;
 var chklstSeqNbr = null;
 var chklstDtlId = null;
@@ -11,7 +12,7 @@ var taskDtlId = null;
 exports.getTemplateList = function(req, res) {
 
     //const db = pgp('postgresql://postgres:air2020@localhost:5432/rnaipl');
-    db.any("SELECT chklst_id,chklst_name,station_name,total_no_instruction FROM chklst_hdr WHERE status_code = 90;")
+    db.any("SELECT chklst_id,chklst_name,station_name,total_no_instruction FROM chklst_hdr WHERE status_code = 80;")
     .then((data) => {
         templateList=data;
         res.render("templateList", templateList);
