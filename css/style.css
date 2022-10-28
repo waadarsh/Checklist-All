@@ -200,7 +200,7 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   background-color: #e9e9ed;
-  background-image: url('Upload.png');
+  background-image: url('../static/Upload.png');
 }
 
 .display-image:hover {
@@ -210,7 +210,7 @@ input {
 
 
 .button-input {
-  background-image: url('Upload.png');
+  background-image: url('../static/Upload.png');
   border: 0.5px solid black;
   width: 60%;
   height: 15rem;
