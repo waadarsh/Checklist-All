@@ -1,0 +1,29 @@
+<%- include('header'); -%>
+<div class = "checklist-container">
+    <h4 class = "checklist-templates">Template list -</h4>
+    <div class = "checklist-inner-container">
+<% if(templateList.length) { %>
+    <% templateList.forEach(function(template) { %>
+                <div class = "checklist-template-panel">
+                    <h3 class="checklist-template-panel-text">
+                        <%= template.chklst_name %>
+                    </h3>
+                    <h3 class="checklist-template-panel-text">|</h3>
+                    <h3 class="checklist-template-panel-text">
+                        <%= template.station_name %>
+                    </h3>
+                    <h3 class="checklist-template-panel-text">|</h3>
+                    <h3 class="checklist-template-panel-text"># Tasks:<%= template.total_no_instruction %>
+                    </h3>
+                    <form action="http://localhost:3000/operator/templateList" method="post">
+                        <input type="hidden" name="chklstId" value="<%= template.chklst_id %>">
+                        <button type="submit" class="checklist-template-panel-button" id="<%= template.chklst_id %>">Start Inspection</button>
+                    </form>
+                </div>
+    <% }) %>
+<% } else { %>
+    No templates available!!!!
+    <% } %>
+    </div>
+</div>
+<%- include('footer') -%>

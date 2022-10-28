@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execute Inspection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" type="text/css" href="/css/executeInspection.css">
+</head>
+<body class="container">
+
+    <% if(inspectionDetails.length) { %>
+        <% inspectionDetails.forEach(function(data) { %>
+            <header>
+                <div class="ui menu" style="background-color: #797979; color : #FFFFFF">
+                    <div style="margin-top: 0.75%; margin-left:1%;">
+                        <strong id = "<%= data.chklst_id %>"> 
+                            <%= data.chklst_name %> | <%= data.station_name %> 
+                        </strong>  
+                    </div>
+                    <div id="test" style="margin-top: 0.75%; margin-left:70%;"> 
+                        <strong> 
+                            <%= data.chklst_seq_nbr+1 %> / <%= data.total_no_instruction %> 
+                        </strong>  
+                    </div>  
+                </div>
+            </header>
+
+            <div class="ui segment" style="position: fixed; left: 2%; height: 80%; width: 96%">
+
+                <div style="margin-top: 0.05%;">
+                    <div style="margin-left:0.1%;"> <strong> PROCESS NAME </strong> : <%= data.process_name %> </div>
+                    <div style="margin-top:-1.70% ;margin-left:55%;"> <strong> CHECK LOCATION </strong> : <%= data.check_location %> </div> 
+                </div>
+
+                <div class="line"></div>
+
+                <div>
+                    <h5>CHECK DETAILS</h5>
+                    <p style="margin-top:-1.10% ;"><%= data.check_details %> </p>
+                </div>
+
+                <div class="line"></div>
+
+                <div id = "divider" style="border-left: 1.5px solid #707070; height: 62%; position: fixed; top: 27.75%; left: 37.5%;"></div>
+
+                    <% if(data.workInstructions.length) { %>
+                        <% for(var i = 0; i < data.workInstructions.length; i++) { %>
+
+                            <% if(i === 0) { %>
+                                <div class = "ui segment" id = "image-container" style="height: 55%; width: 33%; position: fixed; top: 29%; left: 3%;">
+                                    <div class="column">
+                                        <strong style="margin-top:-1em">REFERENCE DIAGRAM</strong>
+                                        <div class="ui placeholder segment" style="position: fixed; height: 46%; width: 30%; border : none; top: 35%; left: 4.5%;">
+                                            <% if(data.workInstructions[i].component_name === "img") { %>
+                                                <div class="ui icon header">
+                                                IMAGE AREA
+                                                </div>
+                                            <% } else { %>
+                                                <div class="ui icon header">
+                                                NO IMAGE AVAILABLE
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+
+                            <% if(data.workInstructions[i].component_name === "inputField1") { %>
+                                <div class = "ui segment" id = "input-field1" style="height: 15%; width: 27%; position: fixed; top: 29%; left: 39%">
+                                    <p style="margin-top: -0.5em;"><%= data.workInstructions[i].property_value %></p><br>
+                                    <input type="text" name = "input-field1-input" id = "input-field1-input" size="40%" placeholder="Type Here" class="textInput">
+                                </div>
+                            <% } %>
+
+                            <% if(data.workInstructions[i].component_name === "inputField2") { %>
+                                <div class = "ui segment" id = "input-field2" style="height: 15%; width: 27%; position: fixed; top: 29%; left: 69%">
+                                    <p style="margin-top: -0.5em;"><%= data.workInstructions[i].property_value %></p><br>
+                                    <input type="text" name = "input-field2-input" id = "input-field2-input" size="40%" placeholder="Type Here" class="textInput">
+                                </div>
+                            <% } %>
+
+                            <% if(data.workInstructions[i].component_name === "comment") { %>
+                                <div class = "ui segment" id = "comment" style="height: 15%; width: 57%; position: fixed; top: 49%; left: 39%">
+                                    <p>Comment</p>
+                                    <textarea class="textArea" name = "comment-input" id = "comment-input" placeholder="Type Here" size="40%"></textarea>
+                                </div>
+                            <% } %>
+
+                            <% if(data.workInstructions[i].component_name === "judgement") { %>
+                                <div class="ui segment" id = "judgement" style="height: 15%; width: 57%; position: fixed; top: 69%; left: 39%">
+                                    <p>JUDGEMENT</p>
+                                        <div style="margin-top: 1%;">
+                                            <button id = "judgement-ok-button" class="judgement-ok-button" onclick="handleOKButtonClick()" style="position: fixed; top: 76%; left: 50%; width: 7.5%; height: 5%;">
+                                                <span class="material-symbols-outlined">done</span>
+                                            </button>
+                                            <button id = "judgement-ng-button" onclick="handleNGButtonClick()" style="position: fixed; top: 76%; left: 70%; width: 7.5%; height: 5%;">
+                                                <span class="material-symbols-outlined">close</span>
+                                            </button>
+                                        </div>                        
+                                </div>
+                            <% break; } %>
+
+                        <% } %>
+                    <% } %>
+                
+                <form action="http://localhost:3000/operator/executeInspection" id = "nextFormSubmission" method="post">
+                    <input type="hidden" name="postchklstId" value="<%= data.chklst_id %>">
+                    <input type="hidden" name="postchklstSeqNbr" value="<%= data.chklst_seq_nbr %>">
+                    <input type="hidden" name="postchklstDtlId" value="<%= data.chklst_dtl_id %>">
+                    <input type="hidden" name="posttaskDtlId" value="<%= data.task_dtl_id %>">
+                    <input type="hidden" name="posthiddenInputField1Value" id="hiddenInputField1Value" value="default">
+                    <input type="hidden" name="posthiddenInputField2Value" id="hiddenInputField2Value" value="default">
+                    <input type="hidden" name="posthiddenCommentValue" id="hiddenCommentValue" value="default">
+                    <input type="hidden" name="posthiddenJudgementButtonValue" id="hiddenJudgementButtonValue" value="default">
+                    <div class="blue ui buttons" style="position: fixed; top: 92%; left: 90%;">
+                        <button type="submit" class = "ui button">NEXT</button>
+                    </div>
+                </form>
+                    
+            </div> 
+    <% }) %>
+    <% } %>
+
+    <script type="text/javascript" src="/script/executeInspection.js"></script> 
+</body>
+</html>
