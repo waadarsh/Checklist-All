@@ -6,14 +6,14 @@ const bodyParser = require('body-parser');
 const createError = require("http-errors");
 const PORT = 3000;
 
+const app = express();
+
 const adminRouter = require("./routes/admin");
 const operatorRouter = require("./routes/operator");
 const { application } = require('express');
 
 app.set("views", path.resolve(__dirname,"views"));
 app.set("view engine", "ejs");
-
-const app = express();
 
 app.use("/css", express.static("css"));
 app.use("/static", express.static("static"));
