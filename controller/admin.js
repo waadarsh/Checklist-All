@@ -19,6 +19,7 @@ exports.getAdmin = function(req, res) {
 
  exports.postAdmin = function(req, res) { 
     const data = req.body;
+    console.log(data.workInstructions[0].workArea.inputField1);
 
     (async () => {
         const client = await pool.connect();
@@ -28,23 +29,37 @@ exports.getAdmin = function(req, res) {
                 const chklstHdr = 'INSERT INTO chklst_hdr(chklst_name,station_name,total_no_instruction,status_code) VALUES ($1,$2,$3,90)'
                 const chklstHdrVal = await client.query(chklstHdr,[data.templateName, data.stationName,data.totalNoOfInstruction])
                 for (let i = 0; i < data.totalNoOfInstruction; i++) {
-                    const chklstDtl = 'INSERT INTO chklst_dtl(chklst_seq_nbr,process_name,check_location,check_details,chklst_id) VALUES ($1,$2,$3,$4,(SELECT MAX(chklst_id) FROM chklst_hdr))'
+                    console.log('Work Instructions');
+                    const chklstDtl = 'INSERT INTO chklst_dtl(chklst_seq_nbr,process_name,check_location,check_details,chklst_id) VALUES ($1,$2,$3,$4,(SELECT MAX(chklst_id) FROM chklst_hdr)) RETURNING chklst_dtl_id'
                     const chklstDtlVal = await client.query(chklstDtl,[data.workInstructions[i].index,data.workInstructions[i].processName,data.workInstructions[i].checkLocation,data.workInstructions[i].checkDetails])
+                    const chklstDetId = chklstDtlVal.rows[0].chklst_dtl_id;
+                    console.log('Work Instructions Added Successfully');
                     const key = Object.keys(data.workInstructions[i].workArea);
-                    console.log('Inside For loop 1');
                     for(let j = 0; j<key.length;j++){
-                        console.log('inside for loop 2');
+                        console.log('Work Area');
+                        if (key[j] === 'image') {
+                            console.log(key[j], ' Component');
+                            const imageDir = `INSERT INTO image_dir(image_bytes) VALUES ($1) RETURNING image_id`
+                            const imageDirVal = await client.query(imageDir,[data.workInstructions[i].workArea.image])
+                            const imageDirId = imageDirVal.rows[0].image_id;
+                            console.log('Image Inserted Successfully');
+                            const imageChklstComponent = `INSERT INTO chklst_component(base_component_id,chklst_dtl_id,composite_component) VALUES ((SELECT component_id FROM component WHERE component_name = 'image' ),$1,$2) RETURNING chklst_component_id`
+                            const imageChklstComponentVal = await client.query(imageChklstComponent,[chklstDetId,'N'])
+                            const imgChklstId = imageChklstComponentVal.rows[0].chklst_component_id;
+                            const imageChklstProperty = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
+                            const imageChklstPropertyVal = await client.query(imageChklstProperty,[imgChklstId,'ImageId',imageDirId,'display'])
+                            console.log(key[j],' component completed');
+                        }
                         if(key[j] === 'inputField1' || key[j] === 'inputField2'){
                             console.log('Inside IF | Checklist Component');
                             let chklstComponent;
                             if(key[j] === 'inputField1') {
-                                chklstComponent = `INSERT INTO chklst_component(chklst_dtl_id,base_component_id,composite_component) VALUES ((SELECT MAX(chklst_dtl_id) FROM chklst_dtl),(SELECT component_id FROM component WHERE component_name = 'inputField1' ),$1) RETURNING chklst_dtl_id,chklst_component_id`
+                                chklstComponent = `INSERT INTO chklst_component(base_component_id,composite_component,chklst_dtl_id) VALUES ((SELECT component_id FROM component WHERE component_name = 'inputField1' ),$1,$2) RETURNING chklst_component_id`
                             }
                             if(key[j] === 'inputField2') {
-                                chklstComponent = `INSERT INTO chklst_component(chklst_dtl_id,base_component_id,composite_component) VALUES ((SELECT MAX(chklst_dtl_id) FROM chklst_dtl),(SELECT component_id FROM component WHERE component_name = 'inputField2' ),$1) RETURNING chklst_dtl_id,chklst_component_id`
+                                chklstComponent = `INSERT INTO chklst_component(base_component_id,composite_component,chklst_dtl_id) VALUES ((SELECT component_id FROM component WHERE component_name = 'inputField2' ),$1,$2) RETURNING chklst_component_id`
                             }
-                            const chklstComponentVal = await client.query(chklstComponent,['Y'])
-                            let chklstDetId = chklstComponentVal.rows[0].chklst_dtl_id;
+                            const chklstComponentVal = await client.query(chklstComponent,['Y',chklstDetId])
                             let chklstCompId = chklstComponentVal.rows[0].chklst_component_id;
                             console.log('Execution successful');
                             const chklstComponentLabel = `INSERT INTO chklst_component(base_component_id,chklst_dtl_id,composite_component) VALUES ((SELECT component_id FROM component WHERE component_name = 'p_label' ),$1,$2) RETURNING chklst_component_id`
@@ -78,9 +93,31 @@ exports.getAdmin = function(req, res) {
                                 const chklstComponentPropertyVal2 = await client.query(chklstComponentProperty2,[chklstInputId,'value','NULL','input'])
                                 console.log('Input Property Inserted Successfully')
                             }
-                            console.log(key[j],' completed');
+                            console.log(key[j],' component completed');
+                        }
+                        if (key[j] === 'judgement') {
+                            console.log(key[j], ' Component');
+                            const judgementChklstComponent = `INSERT INTO chklst_component(base_component_id,composite_component,chklst_dtl_id) VALUES ((SELECT component_id FROM component WHERE component_name = 'judgement' ),$1,$2) RETURNING chklst_component_id`
+                            const judgementChklstComponentVal = await client.query(judgementChklstComponent,['Y',chklstDetId])
+                            const judgementChklstComponentId = judgementChklstComponentVal.rows[0].chklst_component_id;
+                            const judgementButton1 = `INSERT INTO chklst_component(base_component_id,chklst_dtl_id,composite_component) VALUES ((SELECT component_id FROM component WHERE component_name = 'button' ),$1,$2) RETURNING chklst_component_id`
+                            const judgementButton1Val = await client.query(judgementButton1,[chklstDetId,'N'])
+                            const judgementButton2 = `INSERT INTO chklst_component(base_component_id,chklst_dtl_id,composite_component) VALUES ((SELECT component_id FROM component WHERE component_name = 'button' ),$1,$2) RETURNING chklst_component_id`
+                            const judgementButton2Val = await client.query(judgementButton2,[chklstDetId,'N'])
+                            const judgementChklstId1 = judgementButton1Val.rows[0].chklst_component_id;
+                            const judgementChklstId2 = judgementButton2Val.rows[0].chklst_component_id;
+                            const judgementChklstCompositeComponentMapping1 = `INSERT INTO chklst_composite_component_mapping(chklst_component_id,chklst_child_component_id) VALUES ($1,$2)`
+                            const judgementChklstCompositeComponentMappingVal1 = await client.query(judgementChklstCompositeComponentMapping1,[judgementChklstComponentId,judgementChklstId1])
+                            const judgementChklstCompositeComponentMapping2 = `INSERT INTO chklst_composite_component_mapping(chklst_component_id,chklst_child_component_id) VALUES ($1,$2)`
+                            const judgementChklstCompositeComponentMappingVal2 = await client.query(judgementChklstCompositeComponentMapping2,[judgementChklstComponentId,judgementChklstId2])
+                            const judgementComponentProperty1 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
+                            const judgementComponentPropertyVal1 = await client.query(judgementComponentProperty1,[judgementChklstId1,'textContent','default','display'])
+                            const judgementComponentProperty2 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
+                            const judgementComponentPropertyVal2 = await client.query(judgementComponentProperty2,[judgementChklstId2,'textContent','default','display'])
+                            console.log(key[j],' component completed');
                         }
                     }
+                    console.log('Work Area Added Successfully');
                 }
                 await client.query('COMMIT')
                 console.log('COMMIT Successful'); 
