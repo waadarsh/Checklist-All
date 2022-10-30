@@ -106,15 +106,15 @@
                         <% } %>
                     <% } %>
                 
-                <form action="http://localhost:3000/operator/executeInspection" id = "nextFormSubmission" method="post">
+                <form action="http://localhost:3000/operator/executeInspection" id = "nextFormSubmission" method="post" onsubmit="handleNextFormSubmission()">
                     <input type="hidden" name="postchklstId" value="<%= data.chklst_id %>">
                     <input type="hidden" name="postchklstSeqNbr" value="<%= data.chklst_seq_nbr %>">
                     <input type="hidden" name="postchklstDtlId" value="<%= data.chklst_dtl_id %>">
                     <input type="hidden" name="posttaskDtlId" value="<%= data.task_dtl_id %>">
-                    <input type="hidden" name="posthiddenInputField1Value" id="hiddenInputField1Value" value="default">
-                    <input type="hidden" name="posthiddenInputField2Value" id="hiddenInputField2Value" value="default">
-                    <input type="hidden" name="posthiddenCommentValue" id="hiddenCommentValue" value="default">
-                    <input type="hidden" name="posthiddenJudgementButtonValue" id="hiddenJudgementButtonValue" value="default">
+                    <input type="hidden" name="posthiddenInputField1Value" id="posthiddenInputField1Value" value="default">
+                    <input type="hidden" name="posthiddenInputField2Value" id="posthiddenInputField2Value" value="default">
+                    <input type="hidden" name="posthiddenCommentValue" id="posthiddenCommentValue" value="default">
+                    <input type="hidden" name="posthiddenJudgementButtonValue" id="posthiddenJudgementButtonValue" value="default">
                     <div class="blue ui buttons" style="position: fixed; top: 92%; left: 90%;">
                         <button type="submit" class = "ui button">NEXT</button>
                     </div>
@@ -124,6 +124,7 @@
     <% }) %>
     <% } %>
 
+    <img class = "logo" src="/static/renault_nissan_logo.png" style="position: fixed; top: 92%; left: 50%;">
     <script type="text/javascript" src="/script/executeInspection.js"></script> 
 </body>
 </html>
