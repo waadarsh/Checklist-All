@@ -42,6 +42,7 @@ class CreateJSON {
         let inputField1Component = null;
         let inputField2Component = null;
         let judgementComponent = null;
+        let commentComponent = null;
 
         this.jsonText = this.jsonText + `"workArea": {`;
         if(document.getElementById("imageComponent" + i) !== null)
@@ -66,6 +67,13 @@ class CreateJSON {
                 judgementComponent = `"judgement":"Judgement"`;
         }
 
+        if(document.getElementById("commentComponent" + i) !== null)
+        {
+                // commentComponent = `"comment:Comment"`;
+                let commentLabel = document.getElementById("commentLabel" + i).innerHTML;
+                commentComponent = `"comment":` + `"` + commentLabel.toString() + `"`;
+        }
+
         if(imageComponent)
         {
             this.jsonText = this.jsonText + imageComponent;
@@ -75,10 +83,15 @@ class CreateJSON {
                 if(inputField2Component)
                 {
                     this.jsonText = this.jsonText + `,` + inputField2Component;
-                    if(judgementComponent)
+                    if(commentComponent)
                     {
-                        this.jsonText = this.jsonText + `,` + judgementComponent;
+                        this.jsonText = this.jsonText + `,` + commentComponent;
+                        if(judgementComponent)
+                        {
+                            this.jsonText = this.jsonText + `,` + judgementComponent;
+                        } 
                     }
+                    
                 }
             }
         }
@@ -88,24 +101,40 @@ class CreateJSON {
             if(inputField2Component)
             {
                 this.jsonText = this.jsonText + `,` + inputField2Component;
-                if(judgementComponent)
+                if(commentComponent)
                 {
-                    this.jsonText = this.jsonText + `,` + judgementComponent;
+                    this.jsonText = this.jsonText + `,` + commentComponent;
+                    if(judgementComponent)
+                    {
+                        this.jsonText = this.jsonText + `,` + judgementComponent;
+                    } 
                 }
             }
         }
         else if(inputField2Component)
         {
             this.jsonText = this.jsonText + inputField2Component;
+            if(commentComponent)
+                {
+                    this.jsonText = this.jsonText + `,` + commentComponent;
+                    if(judgementComponent)
+                    {
+                        this.jsonText = this.jsonText + `,` + judgementComponent;
+                    } 
+                }
+        }
+        else if(commentComponent)
+        {
+            this.jsonText = this.jsonText + commentComponent;
             if(judgementComponent)
             {
                 this.jsonText = this.jsonText + `,` + judgementComponent;
-            }
+            } 
         }
         else if(judgementComponent)
         {
-            this.jsonText = this.jsonText + judgementComponent;
-        }
+            this.jsonText = this.jsonText + `,` + judgementComponent;
+        } 
 
         if(i === (totalInstruction1-1))
         {
