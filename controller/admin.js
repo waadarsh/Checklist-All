@@ -104,16 +104,23 @@ exports.getAdmin = function(req, res) {
                             const judgementButton1Val = await client.query(judgementButton1,[chklstDetId,'N'])
                             const judgementButton2 = `INSERT INTO chklst_component(base_component_id,chklst_dtl_id,composite_component) VALUES ((SELECT component_id FROM component WHERE component_name = 'button' ),$1,$2) RETURNING chklst_component_id`
                             const judgementButton2Val = await client.query(judgementButton2,[chklstDetId,'N'])
+                            const judgementInput = `INSERT INTO chklst_component(base_component_id,chklst_dtl_id,composite_component) VALUES ((SELECT component_id FROM component WHERE component_name = 'input' ),$1,$2) RETURNING chklst_component_id`
+                            const judgementInputVal = await client.query(judgementInput,[chklstDetId,'N'])
                             const judgementChklstId1 = judgementButton1Val.rows[0].chklst_component_id;
                             const judgementChklstId2 = judgementButton2Val.rows[0].chklst_component_id;
+                            const judgementChklstId3 = judgementInputVal.rows[0].chklst_component_id;
                             const judgementChklstCompositeComponentMapping1 = `INSERT INTO chklst_composite_component_mapping(chklst_component_id,chklst_child_component_id) VALUES ($1,$2)`
                             const judgementChklstCompositeComponentMappingVal1 = await client.query(judgementChklstCompositeComponentMapping1,[judgementChklstComponentId,judgementChklstId1])
                             const judgementChklstCompositeComponentMapping2 = `INSERT INTO chklst_composite_component_mapping(chklst_component_id,chklst_child_component_id) VALUES ($1,$2)`
                             const judgementChklstCompositeComponentMappingVal2 = await client.query(judgementChklstCompositeComponentMapping2,[judgementChklstComponentId,judgementChklstId2])
+                            const judgementChklstCompositeComponentMapping3 = `INSERT INTO chklst_composite_component_mapping(chklst_component_id,chklst_child_component_id) VALUES ($1,$2)`
+                            const judgementChklstCompositeComponentMappingVal3 = await client.query(judgementChklstCompositeComponentMapping3,[judgementChklstComponentId,judgementChklstId3])
                             const judgementComponentProperty1 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
                             const judgementComponentPropertyVal1 = await client.query(judgementComponentProperty1,[judgementChklstId1,'textContent','default','display'])
                             const judgementComponentProperty2 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
                             const judgementComponentPropertyVal2 = await client.query(judgementComponentProperty2,[judgementChklstId2,'textContent','default','display'])
+                            const judgementComponentProperty3 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
+                            const judgementComponentPropertyVal3 = await client.query(judgementComponentProperty3,[judgementChklstId3,'value','NULL','input'])
                             console.log(key[j],' component completed');
                         }
                         if (key[j] === 'comment') {

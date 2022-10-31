@@ -133,7 +133,7 @@ class CreateJSON {
         }
         else if(judgementComponent)
         {
-            this.jsonText = this.jsonText + `,` + judgementComponent;
+            this.jsonText = this.jsonText + judgementComponent;
         } 
 
         if(i === (totalInstruction1-1))
