@@ -26,7 +26,7 @@ exports.getAdmin = function(req, res) {
 
         try {
                 await client.query('BEGIN')
-                const chklstHdr = 'INSERT INTO chklst_hdr(chklst_name,station_name,total_no_instruction,status_code) VALUES ($1,$2,$3,90)'
+                const chklstHdr = 'INSERT INTO chklst_hdr(chklst_name,station_name,total_no_instruction,status_code) VALUES ($1,$2,$3,100)'
                 const chklstHdrVal = await client.query(chklstHdr,[data.templateName, data.stationName,data.totalNoOfInstruction])
                 for (let i = 0; i < data.totalNoOfInstruction; i++) {
                     console.log('Work Instructions');
@@ -114,6 +114,34 @@ exports.getAdmin = function(req, res) {
                             const judgementComponentPropertyVal1 = await client.query(judgementComponentProperty1,[judgementChklstId1,'textContent','default','display'])
                             const judgementComponentProperty2 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
                             const judgementComponentPropertyVal2 = await client.query(judgementComponentProperty2,[judgementChklstId2,'textContent','default','display'])
+                            console.log(key[j],' component completed');
+                        }
+                        if (key[j] === 'comment') {
+                            console.log(key[j], ' Component');
+                            const commentChklstComponent = `INSERT INTO chklst_component(base_component_id,composite_component,chklst_dtl_id) VALUES ((SELECT component_id FROM component WHERE component_name = 'comment' ),$1,$2) RETURNING chklst_component_id`
+                            const commentChklstComponentVal = await client.query(commentChklstComponent,['Y',chklstDetId])
+                            let commentChklstCompId = commentChklstComponentVal.rows[0].chklst_component_id;
+                            console.log('Execution successful');
+                            const commentChklstComponentLabel = `INSERT INTO chklst_component(base_component_id,chklst_dtl_id,composite_component) VALUES ((SELECT component_id FROM component WHERE component_name = 'p_label' ),$1,$2) RETURNING chklst_component_id`
+                            const commentChklstComponentLabelVal = await client.query(commentChklstComponentLabel,[chklstDetId,'N'])
+                            let commentChklstLabelId = commentChklstComponentLabelVal.rows[0].chklst_component_id;
+                            console.log('Label inserted successfully');
+                            const commentChklstComponentInput = `INSERT INTO chklst_component(base_component_id,chklst_dtl_id,composite_component) VALUES ((SELECT component_id FROM component WHERE component_name = 'input' ),$1,$2) RETURNING chklst_component_id`
+                            const commentChklstComponentInputVal = await client.query(commentChklstComponentInput,[chklstDetId,'N'])
+                            let commentChklstInputId = commentChklstComponentInputVal.rows[0].chklst_component_id;
+                            console.log('Input inserted successfully');
+                            const commentChklstCompositeComponentMapping1 = `INSERT INTO chklst_composite_component_mapping(chklst_component_id,chklst_child_component_id) VALUES ($1,$2)`
+                            const commentChklstCompositeComponentMappingVal1 = await client.query(commentChklstCompositeComponentMapping1,[commentChklstCompId,commentChklstLabelId])
+                            console.log('Checklist Composite Component Mapping Part 1',key[j],' Successful');
+                            const commentChklstCompositeComponentMapping2 = `INSERT INTO chklst_composite_component_mapping(chklst_component_id,chklst_child_component_id) VALUES ($1,$2)`
+                            const commentChklstCompositeComponentMappingVal2 = await client.query(commentChklstCompositeComponentMapping2,[commentChklstCompId,commentChklstInputId])
+                            console.log('Checklist Composite Component Mapping Part 2 ',key[j],' Successful');
+                            const commentChklstComponentProperty1 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
+                            const commentChklstComponentPropertyVal1 = await client.query(commentChklstComponentProperty1,[commentChklstLabelId,'innerHTML',data.workInstructions[i].workArea.comment,'display'])
+                            console.log('Label Property Inserted Successfully')
+                            const commentChklstComponentProperty2 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
+                            const commentChklstComponentPropertyVal2 = await client.query(commentChklstComponentProperty2,[commentChklstInputId,'value','NULL','input'])
+                            console.log('Input Property Inserted Successfully')
                             console.log(key[j],' component completed');
                         }
                     }
