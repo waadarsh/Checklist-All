@@ -1,0 +1,480 @@
+# comment
+{
+    "templateName": "1",
+    "stationName": "1",
+    "totalNoOfInstruction": 15,
+    "workInstructions": [
+        {
+            "index": 0,
+            "processName": "1",
+            "checkLocation": "11",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 1,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 2,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 3,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 4,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 5,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 6,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 7,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 8,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 9,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "comment": "Comment"
+            }
+        },
+        {
+            "index": 10,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 11,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 12,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 13,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 14,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        }
+    ]
+}
+
+# Input field
+
+{
+    "templateName": "sss",
+    "stationName": "sss",
+    "totalNoOfInstruction": 15,
+    "workInstructions": [
+        {
+            "index": 0,
+            "processName": "sss",
+            "checkLocation": "sss",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 1,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 2,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 3,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 4,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 5,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 6,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 7,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 8,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 9,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA"
+            }
+        },
+        {
+            "index": 10,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 11,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 12,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 13,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 14,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        }
+    ]
+}
+
+# Judgement section
+
+{
+    "templateName": "",
+    "stationName": "",
+    "totalNoOfInstruction": 11,
+    "workInstructions": [
+        {
+            "index": 0,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 1,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 2,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 3,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 4,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 5,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 6,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 7,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 8,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 9,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 10,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        }
+    ]
+}
+
+#Judgement
+{
+    "templateName": "",
+    "stationName": "",
+    "totalNoOfInstruction": 12,
+    "workInstructions": [
+        {
+            "index": 0,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 1,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 2,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 3,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 4,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 5,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 6,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 7,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 8,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 9,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "judgement": "Judgement"
+            }
+        },
+        {
+            "index": 10,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        },
+        {
+            "index": 11,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {}
+        }
+    ]
+}
