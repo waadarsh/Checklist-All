@@ -49,9 +49,9 @@
                                 <div class = "ui segment" id = "image-container" style="height: 55%; width: 33%; position: fixed; top: 29%; left: 3%;">
                                     <div class="column">
                                         <strong style="margin-top:-1em">REFERENCE DIAGRAM</strong>
-                                        <div class="ui placeholder segment" style="position: fixed; height: 46%; width: 30%; border : none; top: 35%; left: 4.5%;">
+                                        <div class="ui fluid image" style="position: fixed; height: 46%; width: 30%; border : none; top: 35%; left: 4.5%; object-fit: scale-down;">
                                             <% if(data.image != "NA") { %>
-                                                <img src="<%= data.image %>">
+                                                <img src="<%= data.image %>" style="height: 100%;" >
                                             <% } else { %>
                                                 <div class="ui icon header">
                                                 NO IMAGE AVAILABLE

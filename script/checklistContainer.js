@@ -245,7 +245,8 @@ class ChecklistContainer {
             revStr.push(revContainerName[i]);
         }
         //console.log(revStr.toString());
-        let finalStr = revStr.toString().split('').reverse().join('');
+        let finalStr = revStr.toString().split('').reverse().join('').replace(/,/g, "");
+        //console.log(finalStr);
         return finalStr;
     }
 
@@ -873,7 +874,6 @@ class ChecklistContainer {
             }
 
         }
-
 
 
     }

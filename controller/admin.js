@@ -29,14 +29,15 @@ exports.getAdmin = function(req, res) {
                 const chklstHdr = 'INSERT INTO chklst_hdr(chklst_name,station_name,total_no_instruction,status_code) VALUES ($1,$2,$3,100)'
                 const chklstHdrVal = await client.query(chklstHdr,[data.templateName, data.stationName,data.totalNoOfInstruction])
                 for (let i = 0; i < data.totalNoOfInstruction; i++) {
-                    console.log('Work Instructions');
+                    console.log('\x1b[93m--------------------------------------------------------');
+                    console.log('Work Instructions',i+1);
+                    console.log('\x1b[93m--------------------------------------------------------\x1b[0m\n');
                     const chklstDtl = 'INSERT INTO chklst_dtl(chklst_seq_nbr,process_name,check_location,check_details,chklst_id) VALUES ($1,$2,$3,$4,(SELECT MAX(chklst_id) FROM chklst_hdr)) RETURNING chklst_dtl_id'
                     const chklstDtlVal = await client.query(chklstDtl,[data.workInstructions[i].index,data.workInstructions[i].processName,data.workInstructions[i].checkLocation,data.workInstructions[i].checkDetails])
                     const chklstDetId = chklstDtlVal.rows[0].chklst_dtl_id;
-                    console.log('Work Instructions Added Successfully');
+                    console.log('\x1b[95mWork Area',i+1,'\n');
                     const key = Object.keys(data.workInstructions[i].workArea);
                     for(let j = 0; j<key.length;j++){
-                        console.log('Work Area');
                         if (key[j] === 'image') {
                             console.log(key[j], ' Component');
                             const imageDir = `INSERT INTO image_dir(image_bytes) VALUES ($1) RETURNING image_id`
@@ -48,7 +49,7 @@ exports.getAdmin = function(req, res) {
                             const imgChklstId = imageChklstComponentVal.rows[0].chklst_component_id;
                             const imageChklstProperty = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
                             const imageChklstPropertyVal = await client.query(imageChklstProperty,[imgChklstId,'ImageId',imageDirId,'display'])
-                            console.log(key[j],' component completed');
+                            console.log(key[j],' component completed \n');
                         }
                         if(key[j] === 'inputField1' || key[j] === 'inputField2'){
                             console.log('Inside IF | Checklist Component');
@@ -93,7 +94,7 @@ exports.getAdmin = function(req, res) {
                                 const chklstComponentPropertyVal2 = await client.query(chklstComponentProperty2,[chklstInputId,'value','NULL','input'])
                                 console.log('Input Property Inserted Successfully')
                             }
-                            console.log(key[j],' component completed');
+                            console.log(key[j],' component completed \n');
                         }
                         if (key[j] === 'judgement') {
                             console.log(key[j], ' Component');
@@ -121,7 +122,7 @@ exports.getAdmin = function(req, res) {
                             const judgementComponentPropertyVal2 = await client.query(judgementComponentProperty2,[judgementChklstId2,'textContent','default','display'])
                             const judgementComponentProperty3 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
                             const judgementComponentPropertyVal3 = await client.query(judgementComponentProperty3,[judgementChklstId3,'value','NULL','input'])
-                            console.log(key[j],' component completed');
+                            console.log(key[j],' component completed \n');
                         }
                         if (key[j] === 'comment') {
                             console.log(key[j], ' Component');
@@ -149,14 +150,16 @@ exports.getAdmin = function(req, res) {
                             const commentChklstComponentProperty2 = `INSERT INTO chklst_component_property(chklst_component_id,property_name,property_value,property_type) VALUES ($1,$2,$3,$4)`
                             const commentChklstComponentPropertyVal2 = await client.query(commentChklstComponentProperty2,[commentChklstInputId,'value','NULL','input'])
                             console.log('Input Property Inserted Successfully')
-                            console.log(key[j],' component completed');
+                            console.log(key[j],' component completed \n');
                         }
                     }
-                    console.log('Work Area Added Successfully');
+                    console.log('\x1b[95mWork Area',i+1,'\x1b[95mAdded Successfully\x1b[0m \n');
                 }
                 await client.query('COMMIT')
-                console.log('COMMIT Successful'); 
-
+                console.log('\x1b[93mWork Instruction Added Successfully\x1b[0m \n');
+                console.log('\x1b[92m--------------------------------------------------------'); 
+                console.log('COMMIT Successful');
+                console.log('--------------------------------------------------------\x1b[0m \n');
         } catch (e) {
             await client.query('ROLLBACK ');
             console.log('ROLLBACK',e)
