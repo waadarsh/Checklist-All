@@ -1,8 +1,12 @@
 const nextFormSubmissionButton = document.getElementById("nextFormSubmission");
 
-nextFormSubmissionButton.addEventListener("onsubmit", () => {
+function handleNextFormSubmission() {
+    console.log("Inside handleNextFormSubmission");
     if(document.getElementById("input-field1-input") != null) {
+        console.log("hidden-" + document.getElementById("posthiddenInputField1Value"));
+        console.log("inoutfield1-" + document.getElementById("input-field1-input"));
         document.getElementById("posthiddenInputField1Value").value = document.getElementById("input-field1-input").value;
+        console.log("Input Field 1 value- " + document.getElementById("posthiddenInputField1Value").value);
     }
     if(document.getElementById("input-field2-input") != null) {
         document.getElementById("posthiddenInputField2Value").value = document.getElementById("input-field2-input").value;
@@ -11,7 +15,7 @@ nextFormSubmissionButton.addEventListener("onsubmit", () => {
         document.getElementById("posthiddenCommentValue").value = document.getElementById("comment-input").value;
     }
 
-});
+};
 
 function handleOKButtonClick() {
     const okJudgementButton = document.getElementById("judgement-ok-button");

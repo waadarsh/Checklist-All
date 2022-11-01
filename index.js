@@ -20,7 +20,7 @@ app.use("/static", express.static("static"));
 app.use("/script", express.static("script"));
 app.use("/html", express.static("html"));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '1024mb' }));
 app.use(bodyParser.text());
 app.use(express.urlencoded({ extended: false }));
 
