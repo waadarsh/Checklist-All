@@ -46,6 +46,7 @@ exports.postTemplateList = function(req, res) {
 exports.getExecuteInspection = function(req, res) {
     chklstId = req.query.chklstId;
     chklstSeqNbr = req.query.chklstSeqNbr;
+    var image = null;
 
     db.one(`SELECT cd.chklst_dtl_id FROM public.chklst_dtl cd WHERE cd.chklst_id = $1 and cd.chklst_seq_nbr = $2;`,[chklstId,chklstSeqNbr],e => e.chklst_dtl_id)
     .then((data) => {
@@ -60,8 +61,20 @@ exports.getExecuteInspection = function(req, res) {
                     .then((data) => {
                         res.locals.inspectionDetails = data;
                         res.locals.inspectionDetails[0]["task_dtl_id"] = taskDtlId;
-                        console.log(res.locals.inspectionDetails[0]);
-                        res.render("executeInspection",res.locals.inspectionDetails);
+                        db.task(getImage)
+                        .then((data) => {
+                            console.log("getImage.data-" + data);
+                            if(data != null) {
+                                res.locals.inspectionDetails[0]["image"] = data;
+                            }
+                            else {
+                                res.locals.inspectionDetails[0]["image"] = "NA";
+                            }
+                            console.log(res.locals.inspectionDetails[0]);
+                            res.render("executeInspection",res.locals.inspectionDetails);
+                        }).catch(error => {
+                            console.log(error);
+                        })
                     }).catch(error => {
                         console.log(error);
                     })
@@ -79,8 +92,20 @@ exports.getExecuteInspection = function(req, res) {
                 .then((data) => {
                     res.locals.inspectionDetails = data;
                     res.locals.inspectionDetails[0]["task_dtl_id"] = taskDtlId;
-                    console.log(res.locals.inspectionDetails[0]);
-                    res.render("executeInspection",res.locals.inspectionDetails);
+                    db.task(getImage)
+                    .then((data) => {
+                        console.log("getImage.data-" + data);
+                        if(data != null) {
+                            res.locals.inspectionDetails[0]["image"] = data;
+                        }
+                        else {
+                            res.locals.inspectionDetails[0]["image"] = "NA";
+                        }
+                        console.log(res.locals.inspectionDetails[0]);
+                        res.render("executeInspection",res.locals.inspectionDetails);
+                    }).catch(error => {
+                        console.log(error);
+                    })     
                 }).catch(error => {
                     console.log(error);
                 })
@@ -119,7 +144,6 @@ exports.postExecuteInspection = function(req, res) {
         updateTaskRecords("judgement", postJudgementValue, postTaskDtlId);
     }
     
-
     db.none(`UPDATE public.task_dtl SET status_code = 90, updated_dttm = CURRENT_TIMESTAMP WHERE task_dtl_id = $1;`,[taskDtlId])
     .then(() => {
         console.log("Updated task_dtl, task_dtl_id: " + taskDtlId);
@@ -342,6 +366,45 @@ function getWorkInstructionDetails(pgp) {
     AND ch.chklst_id = $1 AND cd.chklst_seq_nbr = $2;`, [chklstId,chklstSeqNbr], v).then(a => pgp.batch(a));
 
 };
+
+function getImage(pgp) {
+    var imageBytes = null;
+    return pgp.one(`SELECT component_id FROM public.component WHERE component_name = 'image' AND composite_component = 'N';`)
+    .then((data) => {
+        //console.log("component_id-" + data.component_id);
+        return pgp.oneOrNone(`SELECT chklst_component_id FROM public.chklst_component WHERE base_component_id = $1 AND chklst_dtl_id = $2;`,[parseInt(data.component_id),chklstDtlId])
+        .then((data) => {
+            //console.log("chklst_component_id-" + data.chklst_component_id);
+            if(data.chklst_component_id != null) {
+                return pgp.one(`SELECT property_value FROM public.chklst_component_property WHERE chklst_component_id = $1 AND property_name = 'ImageId' and property_type = 'display';`,[parseInt(data.chklst_component_id)])
+                .then((data) => {
+                    //console.log("property_value-" + data.property_value);
+                    return pgp.one(`SELECT image_bytes FROM public.image_dir WHERE image_id = $1;`,[data.property_value])
+                    .then((data) => {
+                        // imageBytes = "data:image/png;base64," + data.image_bytes;
+                        imageBytes = data.image_bytes;
+                        //console.log("imageBytes-" + imageBytes);
+                        return imageBytes;
+                    }).catch(error => {
+                        console.log(error);
+                    })
+                }).catch(error => {
+                    console.log(error);
+                })
+            }
+            else {
+                imageBytes =  null;
+                //console.log("imageBytes-" + imageBytes);
+                return imageBytes;
+            }
+        }).catch(error => {
+            console.log(error);
+        })
+    }).catch(error => {
+        console.log(error);
+    })
+    //return imageBytes;
+}
 
 function getWorkInstructionDetailsCompleted(pgp) {
 
