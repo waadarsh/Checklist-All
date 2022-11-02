@@ -478,3 +478,43 @@
         }
     ]
 }
+
+{
+    "templateName": "",
+    "stationName": "",
+    "totalNoOfInstruction": 1,
+    "workInstructions": [
+        {
+            "index": 0,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "inputField2": "QA",
+                "comment": "Comment",
+                "judgement": "Judgement"
+            }
+        }
+    ]
+}
+
+
+
+{
+    "templateName": "",
+    "stationName": "",
+    "totalNoOfInstruction": 1,
+    "workInstructions": [
+        {
+            "index": 0,
+            "processName": "",
+            "checkLocation": "",
+            "checkDetails": "",
+            "workArea": {
+                "inputField1": "MC",
+                "comment": "Comment"
+            }
+        }
+    ]
+}

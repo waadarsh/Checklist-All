@@ -100,6 +100,5 @@ publishButton.addEventListener("click", function() {
     } catch (err) { console.error("err"); }
 
     console.log(finalJSON);
-    alert("Completed");
 });
 

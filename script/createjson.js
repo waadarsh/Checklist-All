@@ -1,5 +1,5 @@
 class CreateJSON {
-    
+
     jsonText;
 
     constructor(templateName, stationName, totalNoOfInstruction) {
@@ -10,7 +10,7 @@ class CreateJSON {
         let tempName = document.getElementById("checklist-name-input").value;
         let statName = document.getElementById("station-name-input").value;
         let totalInstruction = totalNoOfInstruction;
-        console.log(tempName, totalInstruction,statName);
+        console.log(tempName, totalInstruction, statName);
         this.jsonText = `{
             "templateName":` + `"` + tempName + `"` + `,` +
             `"stationName":` + `"` + statName + `"` + `,` +
@@ -21,8 +21,7 @@ class CreateJSON {
     populateProcessHeader(totalInstruction) {
         let totalInstruction1 = totalInstruction;
         this.jsonText = this.jsonText + `"workInstructions": [`;
-        for(let i = 0; i < totalInstruction; i++)
-        {
+        for (let i = 0; i < totalInstruction; i++) {
             let processName = document.getElementById("processNameInput" + i).value;
             let checkLocation = document.getElementById("checkLocationInput" + i).value;
             let checkDetails = document.getElementById("checkDetailsInput" + i).value;
@@ -30,14 +29,14 @@ class CreateJSON {
                 "index":` + i + `,` +
                 `"processName":` + `"` + processName.toString() + `"` + `,` +
                 `"checkLocation":` + `"` + checkLocation.toString() + `"` + `,` +
-                `"checkDetails":` + `"` + checkDetails.toString() + `"` +  `,`;
+                `"checkDetails":` + `"` + checkDetails.toString() + `"` + `,`;
             this.populateWorkArea(i, totalInstruction1);
         }
         this.populateClosingBraces();
     }
 
     populateWorkArea(i, totalInstruction1) {
-        
+
         let imageComponent = null;
         let inputField1Component = null;
         let inputField2Component = null;
@@ -45,103 +44,120 @@ class CreateJSON {
         let commentComponent = null;
 
         this.jsonText = this.jsonText + `"workArea": {`;
-        if(document.getElementById("imageComponent" + i) !== null)
-        {
+        if (document.getElementById("imageComponent" + i) !== null) {
             let imageString = document.getElementById('imgInput' + i).getAttribute('value');
             imageComponent = `"image":` + `"` + imageString + `"`;
         }
-        if(document.getElementById("inputField1Component" + i) !== null)
-        {
-                let inputField1Label = document.getElementById("inputField1Label" + i).innerHTML;
-                inputField1Component = `"inputField1":` + `"` + inputField1Label.toString() + `"`;
+        if (document.getElementById("inputField1Component" + i) !== null) {
+            let inputField1Label = document.getElementById("inputField1Label" + i).innerHTML;
+            inputField1Component = `"inputField1":` + `"` + inputField1Label.toString() + `"`;
         }
 
-        if(document.getElementById("inputField2Component" + i) !== null)
-        {
-                let inputField2Label = document.getElementById("inputField2Label" + i).innerHTML;
-                inputField2Component = `"inputField2":` + `"` + inputField2Label.toString() + `"`;
+        if (document.getElementById("inputField2Component" + i) !== null) {
+            let inputField2Label = document.getElementById("inputField2Label" + i).innerHTML;
+            inputField2Component = `"inputField2":` + `"` + inputField2Label.toString() + `"`;
+        }
+        if (document.getElementById("commentComponent" + i) !== null) {
+                    // commentComponent = `"comment:Comment"`;
+                    let commentLabel = document.getElementById("commentLabel" + i).innerHTML;
+                    commentComponent = `"comment":` + `"` + commentLabel.toString() + `"`;
         }
 
-        if(document.getElementById("judgementComponent" + i) !== null)
-        {
-                judgementComponent = `"judgement":"Judgement"`;
+        if (document.getElementById("judgementComponent" + i) !== null) {
+            judgementComponent = `"judgement":"Judgement"`;
         }
 
-        if(document.getElementById("commentComponent" + i) !== null)
-        {
-                // commentComponent = `"comment:Comment"`;
-                let commentLabel = document.getElementById("commentLabel" + i).innerHTML;
-                commentComponent = `"comment":` + `"` + commentLabel.toString() + `"`;
-        }
+        
+        // // aa
+        // // if (imageComponent) {
+        // //     this.jsonText = this.jsonText + imageComponent;
+        // //     if (inputField1Component) {
+        // //         this.jsonText = this.jsonText + `,` + inputField1Component;
+        // //         if (inputField2Component) {
+        // //             this.jsonText = this.jsonText + `,` + inputField2Component;
+        // //             if (commentComponent) {
+        // //                 this.jsonText = this.jsonText + `,` + commentComponent;
+        // //                 if (judgementComponent) {
+        // //                     this.jsonText = this.jsonText + `,` + judgementComponent;
+        // //                 }
+        // //             }
+        // //         }
+        // //     }
+        // //     console.log("after image input 1")
+        // // }
+        // // else if (inputField1Component) {
+        // //     this.jsonText = this.jsonText + inputField1Component;
+        // //     if (inputField2Component) {
+        // //         this.jsonText = this.jsonText + `,` + inputField2Component;
+        // //         if (commentComponent) {
+        // //             this.jsonText = this.jsonText + `,` + commentComponent;
+        // //             if (judgementComponent) {
+        // //                 this.jsonText = this.jsonText + `,` + judgementComponent;
+        // //             }
+        // //         }
+        // //     }
+        // //     this.jsonText = this.jsonText + `,`;
+        // // }
+        // // else if (inputField2Component) {
+        // //     this.jsonText = this.jsonText + inputField2Component;
+        // //     if (commentComponent) {
+        // //         this.jsonText = this.jsonText + `,` + commentComponent;
+        // //         if (judgementComponent) {
+        // //             this.jsonText = this.jsonText + `,` + judgementComponent;
+        // //         }
+        // //     }
+        // // }
+        // // else if (commentComponent) {
+        // //     this.jsonText = this.jsonText + commentComponent;
+        // //     if (judgementComponent) {
+        // //         this.jsonText = this.jsonText + `,` + judgementComponent;
+        // //     }
+        // // }
+        // // else if (judgementComponent) {
+        // //     this.jsonText = this.jsonText + judgementComponent;
+        // // }
 
-        if(imageComponent)
-        {
-            this.jsonText = this.jsonText + imageComponent;
-            if(inputField1Component)
-            {
-                this.jsonText = this.jsonText + `,` + inputField1Component;
-                if(inputField2Component)
-                {
-                    this.jsonText = this.jsonText + `,` + inputField2Component;
-                    if(commentComponent)
-                    {
-                        this.jsonText = this.jsonText + `,` + commentComponent;
-                        if(judgementComponent)
-                        {
-                            this.jsonText = this.jsonText + `,` + judgementComponent;
-                        } 
-                    }
-                    
-                }
+        if (imageComponent) {         
+                 if(!inputField1Component && !inputField2Component && !commentComponent && !judgementComponent){
+                    this.jsonText = this.jsonText + imageComponent;
+                 }else{
+                this.jsonText = this.jsonText + imageComponent + `,`; 
             }
         }
-        else if(inputField1Component)
-        {
-            this.jsonText = this.jsonText + inputField1Component;
-            if(inputField2Component)
-            {
-                this.jsonText = this.jsonText + `,` + inputField2Component;
-                if(commentComponent)
-                {
-                    this.jsonText = this.jsonText + `,` + commentComponent;
-                    if(judgementComponent)
-                    {
-                        this.jsonText = this.jsonText + `,` + judgementComponent;
-                    } 
-                }
+
+        if (inputField1Component) {
+            if(!inputField2Component && !commentComponent && !judgementComponent){
+                this.jsonText = this.jsonText + inputField1Component;
+             }else{
+            this.jsonText = this.jsonText + inputField1Component+ `,`;
+             }
+        }
+
+        if (inputField2Component) {
+            if(!commentComponent && !judgementComponent){
+                this.jsonText = this.jsonText + inputField2Component;
+             }else{
+                this.jsonText = this.jsonText + inputField2Component + `,`;
             }
         }
-        else if(inputField2Component)
-        {
-            this.jsonText = this.jsonText + inputField2Component;
-            if(commentComponent)
-                {
-                    this.jsonText = this.jsonText + `,` + commentComponent;
-                    if(judgementComponent)
-                    {
-                        this.jsonText = this.jsonText + `,` + judgementComponent;
-                    } 
-                }
+
+        if (commentComponent) {
+            if(!judgementComponent){
+                this.jsonText = this.jsonText + commentComponent;
+             }else{
+            this.jsonText = this.jsonText + commentComponent + `,`;
+            }
         }
-        else if(commentComponent)
-        {
-            this.jsonText = this.jsonText + commentComponent;
-            if(judgementComponent)
-            {
-                this.jsonText = this.jsonText + `,` + judgementComponent;
-            } 
-        }
-        else if(judgementComponent)
-        {
+
+        if (judgementComponent) {
             this.jsonText = this.jsonText + judgementComponent;
-        } 
+        }
 
-        if(i === (totalInstruction1-1))
-        {
+
+        if (i === (totalInstruction1 - 1)) {
             this.jsonText = this.jsonText + `}}`;
         }
-        else
-        {
+        else {
             this.jsonText = this.jsonText + `}},`;
         }
     }
@@ -152,4 +168,4 @@ class CreateJSON {
 
 }
 
-export {CreateJSON};
+export { CreateJSON };
