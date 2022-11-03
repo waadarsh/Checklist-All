@@ -298,11 +298,11 @@ class ChecklistContainer {
                 reader.addEventListener("load", (e) => {
                     const imageString = reader.result;
                     const imgInput = document.createElement("input");
-                    imgInput.setAttribute('id','imgInput'+index);
+                    imgInput.setAttribute('id', 'imgInput' + index);
                     imgInput.setAttribute('style', 'display: none');
-                    imgInput.setAttribute('value',imageString);
+                    imgInput.setAttribute('value', imageString);
                     div.appendChild(imgInput);
-                    
+
                 })
                 reader.readAsDataURL(file);
                 var url = URL.createObjectURL(input.files[0]);
@@ -366,29 +366,39 @@ class ChecklistContainer {
                 const div = document.createElement("div");
                 // // div.classList.add("hover-div");
                 // // div.setAttribute("draggable", "true");
+                div.classList.add("input-field1-component");
                 div.setAttribute("id", "inputField1Component" + index);
                 const label = document.createElement("p");
                 label.setAttribute("id", "inputField1Label" + index);
+                label.classList.add("label-field1");
                 label.innerHTML = "MC";
                 label.setAttribute("style", "margin:5%");
-                label.style.width = "10ch";
+                // label.style.width = "10ch";
+                label.style.textAlign = "center";
+                label.style.width = "auto";
                 div.appendChild(label);
-                const input = document.createElement("input");
-                input.setAttribute("id", "inputField1Input" + index);
-                input.setAttribute("type", "text");
-                input.setAttribute("style", "margin-left:10px");
-                input.style.width = "17ch";
-                input.disabled = true;
-                div.classList.add("input-field1-component");
-                div.appendChild(input);
+
+                const line = document.createElement("div");
+                line.setAttribute("id", "labelline1" + index);
+                line.classList.add("line");
+                div.appendChild(line);      
+
+                // const input = document.createElement("input");
+                // input.setAttribute("id", "inputField1Input" + index);
+                // input.setAttribute("type", "text");
+                // input.setAttribute("style", "margin-left:10px");
+                // input.style.width = "17ch";
+                // input.disabled = true;
+                // div.appendChild(input);
 
                 if (document.getElementById("delete1" + index) === null) {
                     const del = document.createElement("a");
                     del.setAttribute("id", "delete1" + index);
                     //del.setAttribute("type","button");
-                    del.setAttribute("style", 'margin: 2rem');
-                    del.innerHTML += '<i class="material-icons">delete</i>';
-                    del.setAttribute("style", "display:none");
+                    // del.setAttribute("style", 'margin: 2rem');
+                    del.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
+                    // del.setAttribute("style", "display:none");
+
                     div.appendChild(del);
                     del.onclick = function () {
                         // //const del = document.getElementById("inputField1Container" + index);
@@ -400,35 +410,33 @@ class ChecklistContainer {
                 }
 
 
-
                 if (document.getElementById("edit1" + index) === null) {
                     var isAlphabet = false;
                     var isNumeric = false;
                     const edit1 = document.createElement("a");
                     edit1.setAttribute("id", "edit1" + index);
-                    edit1.innerHTML += '<span class="material-icons">edit</span>';
-
-                    edit1.setAttribute("style", "display:none");
+                    edit1.innerHTML += '<i class="edit outline large black icon" style="float:right"></i>';
+                    // edit1.setAttribute("style", "display:none");
                     div.appendChild(edit1);
                     edit1.onclick = function () {
-
                         var x = document.createElement("div");
                         x.setAttribute("id", "edit" + index);
                         x.classList.add("edit-panel-container");
                         x.setAttribute("style", "display:block");
                         // x.style.display = "block"
                         const he3 = document.createElement("h3");
-                        he3.innerHTML = "<h3>Edit Header</h3>"
+                        he3.innerHTML = "<h3>EDIT INPUT LABEL</h3>"
 
 
                         const inp = document.createElement("input");
                         inp.setAttribute("type", "text");
                         inp.setAttribute("id", "txt" + index);
+                        inp.classList.add("inp-edit-panel");
                         inp.setAttribute("style", "width:80%");
                         const button = document.createElement("a");
                         button.setAttribute("id", "icn" + index);
                         button.setAttribute("style", "margin-left:3%");
-                        button.innerHTML += '<span class="material-symbols-outlined">check_circle</span>';
+                        button.innerHTML += '<i class="check circle outline black large icon"></i>';
                         button.onclick = function () {
                             x.style.display = "none";
                             var val = document.getElementById("txt" + index).value;
@@ -588,24 +596,31 @@ class ChecklistContainer {
                 const label = document.createElement("p");
                 label.setAttribute("id", "inputField2Label" + index);
                 label.innerHTML = "QA";
-                label.style.width = "10ch";
+                // label.style.width = "10ch";
                 label.setAttribute("style", "margin:5%");
+                label.style.textAlign = "center";
+                label.style.width = "auto";
                 div.appendChild(label);
 
-                const input = document.createElement("input");
-                input.setAttribute("id", "inputField2Input" + index);
-                input.setAttribute("type", "text");
-                input.setAttribute("size", "10rem");
-                input.setAttribute("style", "margin-left:5%");
-                input.style.width = "17ch";
-                input.disabled = true;
-                div.appendChild(input);
+                const line = document.createElement("div");
+                line.setAttribute("id", "labelline1" + index);
+                line.classList.add("line");
+                div.appendChild(line);
+
+                // const input = document.createElement("input");
+                // input.setAttribute("id", "inputField2Input" + index);
+                // input.setAttribute("type", "text");
+                // input.setAttribute("size", "10rem");
+                // input.setAttribute("style", "margin-left:5%");
+                // input.style.width = "17ch";
+                // input.disabled = true;
+                // div.appendChild(input);
 
                 if (document.getElementById("delete2" + index) === null) {
                     const del1 = document.createElement("a");
                     del1.setAttribute("id", "delete2" + index);
-                    del1.setAttribute("style", 'margin-left: 2rem');
-                    del1.innerHTML += '<span class="material-icons">delete</span>';
+                    //del1.setAttribute("style", 'margin-left: 2rem');
+                    del1.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
 
                     div.appendChild(del1);
                     del1.onclick = function () {
@@ -624,7 +639,7 @@ class ChecklistContainer {
                     edit2.setAttribute("id", "edit2" + index);
                     //edit2.setAttribute("style", 'margin-right: 1rem');
                     edit2.setAttribute("style", 'margin: 1rem');
-                    edit2.innerHTML += '<span class="material-icons">edit</span>';
+                    edit2.innerHTML += '<i class="edit outline large black icon" style="float:right"></i>';
 
                     edit2.setAttribute("style", "display:none");
                     div.appendChild(edit2);
@@ -634,15 +649,16 @@ class ChecklistContainer {
                         x.classList.add("edit-panel-container");
                         x.setAttribute("style", "display:block");
                         const he3 = document.createElement("h3");
-                        he3.innerHTML = "<h3>Edit Header</h3>"
+                        he3.innerHTML = "<h3>EDIT INPUT LABEL</h3>"
                         const inp = document.createElement("input");
                         inp.setAttribute("type", "text");
                         inp.setAttribute("id", "txt" + index);
+                        inp.classList.add("inp-edit-panel");
                         inp.setAttribute("style", "width:80%");
                         const button = document.createElement("a");
                         button.setAttribute("id", "icn" + index);
                         button.setAttribute("style", "margin-left:3%");
-                        button.innerHTML += '<span class="material-symbols-outlined">check_circle</span>';
+                        button.innerHTML += '<i class="check circle outline black large icon"></i>';
                         button.onclick = function () {
                             x.style.display = "none";
                             var val = document.getElementById("txt" + index).value;
