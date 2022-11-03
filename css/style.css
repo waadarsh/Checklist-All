@@ -28,7 +28,6 @@ input {
   border-radius: 7.5px;
 }
 
-
 .checklist-header-container {
   background-color: #ffffff;
   width: 70%;
@@ -69,22 +68,23 @@ input {
 }
 
 .process-header-container {
-  /* background-color: #eaeaea; */
+
   background-image: linear-gradient(#ff5f00, #e39318);
   width: auto;
-  min-height: 30%;
-  /*margin-top: 1%;*/
-  /* margin-left: 1%; */
+  /* min-height: 30%; */
   display: flex;
-  /*justify-content:space-between;*/
   align-items: center;
   padding: 1%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  /* border-style: solid;
-  border-color: black; */
   border-width: 1.5px;
   border-bottom: none;
+  /* background-color: #eaeaea; */
+  /* border-style: solid;
+  border-color: black; */
+  /*justify-content:space-between;*/
+  /*margin-top: 1%;*/
+  /* margin-left: 1%; */
 }
 
 .process-name-container {
@@ -92,6 +92,7 @@ input {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
+  width: 40%;
 }
 
 .check-location-container {
@@ -100,43 +101,123 @@ input {
   justify-content: space-evenly;
   align-items: flex-start;
   margin-left: 10%;
+  width: 40%;
+}
+
+.process-name-input {
+  /* width: auto;
+  padding-right: 200px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px; */
+  /* box-sizing: border-box; */
+  /* display: inline-block; */
+  margin: 0em;
+  max-width: 100%;
+  flex: 1 0 auto;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  text-align: left;
+  line-height: 1.21428571em;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 0.67857143em 1em;
+  background: #FFFFFF;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 0.28571429rem;
+  transition: box-shadow 0.1s ease, border-color 0.1s ease;
+  box-shadow: none;
+  width: 100%;
+}
+
+
+.check-location-input {
+  /* width: auto;
+  padding-right: 200px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px; */
+  /* box-sizing: border-box; */
+  /* display: inline-block; */
+  margin: 0em;
+  max-width: 100%;
+  flex: 1 0 auto;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  text-align: left;
+  line-height: 1.21428571em;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 0.67857143em 1em;
+  background: #FFFFFF;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 0.28571429rem;
+  transition: box-shadow 0.1s ease, border-color 0.1s ease;
+  box-shadow: none;
+  width: 100%;
 }
 
 .instruction-no-container {
   font-size: larger;
   margin-left: 30%;
   font-weight: bolder;
+  margin: auto;
 }
 
 .check-details-container {
   background-color: #ffffff;
   width: auto;
-  /*margin-top: 1%;*/
-  /* margin-left: 1%; */
   min-height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
   padding: 1%;
+  border-width: 0px 1.5px 0px 1.5px;
   /* border-style: solid;
   border-color: black; */
-  border-width: 0px 1.5px 0px 1.5px;
+  /*margin-top: 1%;*/
+  /* margin-left: 1%; */
 }
 
+
 .check-details-input {
-  min-width: 100%;
+  /* min-width: 100%;
+  width: auto;
+  padding: auto;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px; */
+  /* display: inline-block; */
+  /* box-sizing: border-box; */
+  margin: 0em;
+  max-width: 100%;
+  flex: 1 0 auto;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  text-align: left;
+  line-height: 1.21428571em;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 0.67857143em 1em;
+  background: #FFFFFF;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 0.28571429rem;
+  transition: box-shadow 0.1s ease, border-color 0.1s ease;
+  box-shadow: none;
+  width: 100%;
 }
+
 
 .work-area-container {
   height: 40rem;
   width: auto;
   background-color: #ffffff;
-  /* margin-left: 1%; */
-  /* border-style: solid; */
   border-color: white;
   border-width: 1.5px 1.5px 1.5px 1.5px;
-  margin-top: -1.5%;  
+  margin-top: -1.5%;
+  /* margin-left: 1%; */
+  /* border-style: solid; */
 }
 
 .image-container {
@@ -156,7 +237,7 @@ input {
   width: 100%;
   margin-top: 2%;
   margin-left: 2%;
-  
+
   /*
     border-style: dashed;
     border-color: orange;

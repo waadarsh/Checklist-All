@@ -56,7 +56,7 @@ class ChecklistContainer {
         const input = document.createElement("input");
         input.setAttribute("id", "processNameInput" + this.index);
         input.setAttribute("type", "text");
-        input.setAttribute("placeholder", "  Type here");
+        input.setAttribute("placeholder", "TYPE HERE");
         input.classList.add("process-name-input");
         //input.value = "   Type here";
         processNameContainer.appendChild(input);
@@ -82,7 +82,7 @@ class ChecklistContainer {
         const input = document.createElement("input");
         input.setAttribute("id", "checkLocationInput" + this.index);
         input.setAttribute("type", "text");
-        input.setAttribute("placeholder", "  Type Here")
+        input.setAttribute("placeholder", "TYPE HERE")
         input.classList.add("check-location-input");
         //input.value = "   Type here";
         checkLocationContainer.appendChild(input);
@@ -128,13 +128,13 @@ class ChecklistContainer {
         label.setAttribute("id", "checkDetailsInputLabel" + this.index);
         label.setAttribute("for", "checkDetailsInput" + this.index);
         label.textContent = "CHECK DETAILS";
-        label.classList.add("check-details-input");
+        //label.classList.add("check-details-input");
         checkDetailsContainer.appendChild(label);
 
         const input = document.createElement("input");
         input.setAttribute("id", "checkDetailsInput" + this.index);
         input.setAttribute("type", "text");
-        input.setAttribute("placeholder", "  Type here");
+        input.setAttribute("placeholder", "TYPE HERE");
         input.classList.add("check-details-input");
         //input.value = "   Type here";
         checkDetailsContainer.appendChild(input);
