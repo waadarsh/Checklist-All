@@ -268,6 +268,17 @@ class ChecklistContainer {
             div.setAttribute("id", "imageComponent" + index);
             div.classList.add("image-component");
 
+            const label = document.createElement("p");
+            label.setAttribute("id", "commentLabel" + index);
+            label.innerHTML = "IMAGE UPLOAD";
+            label.style.textAlign = "center";
+            label.style.width = "100%";
+            div.appendChild(label);
+
+            const line = document.createElement("div");
+            line.setAttribute("id", "labelline1" + index);
+            line.classList.add("line");
+            div.appendChild(line);
             /*const button = document.createElement("button");
             button.setAttribute("id", "button" + index);
             button.classList.add("button-input");
@@ -309,6 +320,42 @@ class ChecklistContainer {
                 display_image.src = url;
             })
 
+            if (document.getElementById("deleteImg" + index) === null) {
+                const delImg = document.createElement("a");
+                delImg.setAttribute("id", "deleteImg" + index);
+                //del.setAttribute("type","button");
+                // del.setAttribute("style", 'margin: 2rem');
+                delImg.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
+                // del.setAttribute("style", "display:none");
+
+                div.appendChild(delImg);
+                delImg.onclick = function () {
+                    // //const del = document.getElementById("inputField1Container" + index);
+                    imageContainer.innerHTML = '';
+                }
+            }
+
+            div.onmouseenter = function () {
+                mouseEnter();
+            }
+
+            div.onmouseleave = function () {
+                mouseLeave();
+            }
+
+            function mouseEnter() {
+                console.log(Event.target);
+
+                const delonHover = document.getElementById("deleteImg" + index);
+                delonHover.setAttribute("style", "display:block");
+                delonHover.setAttribute("style", "cursor:pointer");
+            };
+
+            function mouseLeave() {
+                document.getElementById("deleteImg" + index).style.display = "none";
+
+            }
+
 
             div.appendChild(display_image);
             //div.appendChild(button);
@@ -332,17 +379,59 @@ class ChecklistContainer {
             div.setAttribute("id", "commentComponent" + index);
             div.classList.add("comment-component");
 
-            const label = document.createElement("label");
+            const label = document.createElement("p");
             label.setAttribute("id", "commentLabel" + index);
-            label.innerHTML = "Comment";
+            label.innerHTML = "COMMENT";
+            label.style.textAlign = "center";
+            label.style.width = "100%";
             div.appendChild(label);
 
-            const input = document.createElement("textarea");
-            input.setAttribute("id", "commentInput" + index);
-            // input.setAttribute("style", "margin-left:10px");
-            input.classList.add("commentInputBox");
-            input.disabled = true;
-            div.appendChild(input);
+            const line = document.createElement("div");
+            line.setAttribute("id", "labelline1" + index);
+            line.classList.add("line");
+            div.appendChild(line);
+
+            if (document.getElementById("deleteComment" + index) === null) {
+                const delComment = document.createElement("a");
+                delComment.setAttribute("id", "deleteComment" + index);
+                //del.setAttribute("type","button");
+                // del.setAttribute("style", 'margin: 2rem');
+                delComment.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
+                // del.setAttribute("style", "display:none");
+
+                div.appendChild(delComment);
+                delComment.onclick = function () {
+                    // //const del = document.getElementById("inputField1Container" + index);
+                    commentContainer.innerHTML = '';
+                }
+            }
+
+            div.onmouseenter = function () {
+                mouseEnter();
+            }
+
+            div.onmouseleave = function () {
+                mouseLeave();
+            }
+
+            function mouseEnter() {
+                console.log(Event.target);
+
+                const delonHover = document.getElementById("deleteComment" + index);
+                delonHover.setAttribute("style", "display:block");
+                delonHover.setAttribute("style", "cursor:pointer");
+            };
+
+            function mouseLeave() {
+                document.getElementById("deleteComment" + index).style.display = "none";
+
+            }
+
+            // const input = document.createElement("textarea");
+            // input.setAttribute("id", "commentInput" + index);
+            // input.classList.add("commentInputBox");
+            // input.disabled = true;
+            // div.appendChild(input);
 
             //div.appendChild(button);
             //button.appendChild(input);
@@ -381,7 +470,7 @@ class ChecklistContainer {
                 const line = document.createElement("div");
                 line.setAttribute("id", "labelline1" + index);
                 line.classList.add("line");
-                div.appendChild(line);      
+                div.appendChild(line);
 
                 // const input = document.createElement("input");
                 // input.setAttribute("id", "inputField1Input" + index);
@@ -437,6 +526,7 @@ class ChecklistContainer {
                         button.setAttribute("id", "icn" + index);
                         button.setAttribute("style", "margin-left:3%");
                         button.innerHTML += '<i class="check circle outline black large icon"></i>';
+                        button.style.cursor = "pointer";
                         button.onclick = function () {
                             x.style.display = "none";
                             var val = document.getElementById("txt" + index).value;
@@ -476,6 +566,7 @@ class ChecklistContainer {
                         radioBtn2.setAttribute("id", "radioBtn2" + index);
                         radioBtn2.setAttribute("type", "radio");
                         radioBtn2.setAttribute("style", "width:7%");
+                        radioBtn2.style.marginLeft = "12%";
                         radioBtn2.onclick = function () {
                             isNumeric = true;
                             document.getElementById("radioBtn1" + index).disabled = "true";
@@ -659,6 +750,7 @@ class ChecklistContainer {
                         button.setAttribute("id", "icn" + index);
                         button.setAttribute("style", "margin-left:3%");
                         button.innerHTML += '<i class="check circle outline black large icon"></i>';
+                        button.style.cursor = "pointer";
                         button.onclick = function () {
                             x.style.display = "none";
                             var val = document.getElementById("txt" + index).value;
@@ -833,28 +925,38 @@ class ChecklistContainer {
             judgementContainer.classList.remove("over");
             const label = document.createElement("p");
             label.setAttribute("id", "judgementLabel" + index);
-            label.textContent = "STATUS";
-            label.setAttribute("style", "margin-left:2%");
+            label.textContent = "JUDGEMENT";
+            label.style.textAlign = "center";
+            // label.style.width = "auto";
+            // label.setAttribute("style", "margin-left:2%");
             judgementComponent.appendChild(label);
 
+            const line = document.createElement("div");
+            line.setAttribute("id", "labelline1" + index);
+            line.classList.add("line");
+            judgementComponent.appendChild(line);
 
-            const okButton = document.createElement("button");
-            okButton.setAttribute("id", "okButton" + index);
-            okButton.innerHTML += '<span class="material-symbols-outlined">check_circle</span>';
-            judgementComponent.appendChild(okButton);
-            okButton.classList.add("judgement-button");
-            okButton.classList.add("judgement-ok-button");
+
+            const button = document.createElement("div");
+            button.setAttribute("id", "okButton" + index);
+            button.innerHTML += '<button class="ui green basic icon button" style="padding: 2% 6%;"><i class="check circle outline black large icon"></i></button><button class="ui red basic icon button" style="margin-left:10%;padding: 2% 6%"><i class="times circle outline black large icon"></i></button>';
+            button.style.textAlign = "center";
+            button.style.marginTop = "2%";
+            button.style.width = "auto";
+            judgementComponent.appendChild(button);
+            // okButton.classList.add("judgement-button");
+            // okButton.classList.add("judgement-ok-button");
             // okButton.addEventListener("click", function (Event) {
             //     okButton.style.backgroundColor = "green";
             //     ngButton.disabled = "true";
             //     ngButton.style.boxShadow = "false";
             // });
-            const ngButton = document.createElement("button");
-            ngButton.setAttribute("id", "ngButton" + index);
-            ngButton.innerHTML += '<span class="material-symbols-outlined">cancel</span >';
-            ngButton.classList.add("judgement-button");
-            ngButton.classList.add("judgement-ng-button");
-            judgementComponent.appendChild(ngButton);
+            // const ngButton = document.createElement("div");
+            // ngButton.setAttribute("id", "ngButton" + index);
+            // ngButton.innerHTML += '<span class="ui red basic button">Red</span>';
+            // ngButton.classList.add("judgement-button");
+            // ngButton.classList.add("judgement-ng-button");
+            // okButton.appendChild(ngButton);
             // ngButton.addEventListener("click", function (Event) {
             //     ngButton.style.backgroundColor = "red";
             //     okButton.disabled = "true";
@@ -863,8 +965,8 @@ class ChecklistContainer {
                 const del2 = document.createElement("a");
                 del2.setAttribute("id", "delete3" + index);
                 del2.setAttribute("style", "float:right");
-                del2.innerHTML += '<span class="material-icons">delete</span>';
-                judgementComponent.appendChild(del2);
+                del2.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
+                button.appendChild(del2);
                 del2.onclick = function () {
                     // //const del = document.getElementById("inputField1Container" + index);
                     document.getElementById("judgementComponent" + index).remove();

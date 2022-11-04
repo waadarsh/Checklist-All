@@ -225,11 +225,11 @@ input {
   width: 50%;
   margin-top: 2%;
   margin-left: 2%;
-  /*
-    border-style: dashed;
-    border-color: orange;
-    border-width: 2.5px 2.5px 2.5px 2.5px;
-    */
+/* 
+  border-style: dashed;
+  border-color: orange;
+  border-width: 2.5px 2.5px 2.5px 2.5px; */
+
 }
 
 .comment-container {
@@ -238,11 +238,11 @@ input {
   margin-top: 2%;
   margin-left: 2%;
 
-  /*
-    border-style: dashed;
-    border-color: orange;
-    border-width: 2.5px 2.5px 2.5px 2.5px;
-    */
+/* 
+  border-style: dashed;
+  border-color: orange;
+  border-width: 2.5px 2.5px 2.5px 2.5px; */
+
 }
 
 .commentInputBox {
@@ -257,6 +257,10 @@ input {
   width: 70%;
   margin-top: 2%;
   margin-left: 2%;
+  border: 0.5px black;
+  background-color: #ffffff;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2%;
 
 }
 
@@ -274,15 +278,17 @@ input {
 .display-image {
 
   /* display: block;  */
-  border: 0.5px solid black;
+  border:none;
+  outline: none;
   height: 15rem;
-  width: 60%;
-  margin-top: 2%;
-  margin-left: 2%;
+  width: 70%;
+  display: block;
+  margin-top: 4%;
+  margin-left: 13%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #e9e9ed;
+  /* background-color: #e9e9ed; */
   background-image: url('../static/Upload.png');
 }
 
@@ -315,18 +321,19 @@ input {
   height: 6rem;
   width: 30%;
   margin: 2%;
-  /*
-    border-style: dashed;
-    border-color: orange;
-    border-width: 2.5px 2.5px 2.5px 2.5px;
-    */
+/* 
+  border-style: dashed;
+  border-color: orange;
+  border-width: 2.5px 2.5px 2.5px 2.5px; */
+
 }
 
+/* 
 .input-field-component {
   height: 6rem;
   width: 40%;
   margin: 2%;
-}
+} */
 
 .input-field1-component {
   height: 6rem;
@@ -338,27 +345,16 @@ input {
   border-radius: 6px;
 }
 
-/* .del-edit-panel{
-  display: inline;
-} */
-.line {
-  width: auto;
-  height: auto;
-  border-bottom: 1px solid #707070;
-  /* margin: 2% 0.1%; */
-  margin-top: -2%;
-  opacity: 0.3;
-}
 
 .input-field2-container {
   height: 6rem;
   width: 30%;
   margin: 2%;
-  /*
-    border-style: dashed;
-    border-color: orange;
-    border-width: 2.5px 2.5px 2.5px 2.5px;
-    */
+/* 
+  border-style: dashed;
+  border-color: orange;
+  border-width: 2.5px 2.5px 2.5px 2.5px; */
+
 }
 
 .input-field2-component {
@@ -370,6 +366,15 @@ input {
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   border-radius: 6px;
 
+}
+
+.line {
+  width: auto;
+  height: auto;
+  border-bottom: 1px solid #707070;
+  /* margin: 2% 0.1%; */
+  margin-top: -2%;
+  opacity: 0.3;
 }
 
 .input-field1-container.over {
@@ -398,14 +403,14 @@ input {
 
 .judgement-container {
   height: 6rem;
-  width: 35%;
+  width: 30%;
   margin: 2%;
 
-  /*
-    border-style: dashed;
-    border-color: orange;
-    border-width: 2.5px 2.5px 2.5px 2.5px;
-    */
+/* 
+  border-style: dashed;
+  border-color: orange;
+  border-width: 2.5px 2.5px 2.5px 2.5px; */
+
 }
 
 .comment-container {
@@ -428,37 +433,37 @@ input {
 
 .judgement-component {
   height: 6rem;
-  width: 50%;
-  margin: 2%;
+  width: 100%;
+  margin: 4.5% 2%;
   border: 0.5px black;
   background-color: #ffffff;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 5%;
+  border-radius: 6px;
 }
-
+/* 
 .judgement-button {
   height: 3rem;
   width: 30%;
   margin: 5%;
 
-}
+} */
 
-.judgement-ok-button {
+/* .judgement-ok-button {
   background-color: white;
   border-radius: 20px;
   border: 2px solid #4CAF50;
 
-}
+} */
 
 /* .judgement-ok-button:hover {
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 } */
 
-.judgement-ng-button {
+/* .judgement-ng-button {
   background-color: white;
   border-radius: 20px;
   border: 2px solid #f44336;
-}
+} */
 
 /* .judgement-ng-button:hover {
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -496,7 +501,7 @@ input {
   float: left;
   background-color: #ffffff;
   width: 19%;
-  height: fit-content;  
+  height: fit-content;
   margin-top: 15%;
   margin-left: 1%;
   padding: 1%;
@@ -513,7 +518,7 @@ input {
   border-color: rgba(34, 36, 38, 0.15);
 }
 
-.inp-edit-panel{
+.inp-edit-panel {
   margin: 0em;
   max-width: 100%;
   flex: 1 0 auto;
@@ -531,6 +536,8 @@ input {
   box-shadow: none;
   width: 100%;
 }
+
+
 
 .publish-json-container {
   float: right;
@@ -552,14 +559,14 @@ input {
   align-items: center;
 }
 
-.publish-button {
+/* .publish-button {
   background-color: #ff5f00;
   width: 30%;
   height: 2rem;
   border-radius: 5px;
   font-size: small;
   color: white;
-}
+} */
 
 /* .components {
   display: flex;
