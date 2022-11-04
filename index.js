@@ -9,6 +9,7 @@ const PORT = 3000;
 const app = express();
 
 const adminRouter = require("./routes/admin");
+const landingRouter = require("./routes/landing");
 const operatorRouter = require("./routes/operator");
 const { application } = require('express');
 
@@ -26,6 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/admin", adminRouter);
 app.use("/operator", operatorRouter);
+app.use("/landing", landingRouter);
+
 
 app.use(function(req, res, next) {
     next(createError(404));

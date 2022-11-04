@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
         integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 
 
@@ -58,10 +57,12 @@
     </div> -->
     <div class="main-container">
         <div class="label-container" style="margin: 1%;">
-            <h3>CREATING A NEW CHECKLIST</h3>
+            <button class="ui inverted black basic button icon" onclick="history.back() "><i class="angle left black large icon"></i></button>
+            <h3 style="display: inline;">CREATING A NEW CHECKLIST</h3>
         </div>
         <div class="ui grid" style="margin: 1%">
-            <div class="checklist-container ui segment twelve wide column " style="background-color: #EFEFEF; height: fit-content;">
+            <div class="checklist-container ui segment twelve wide column "
+                style="background-color: #EFEFEF; height: fit-content;">
                 <!-- TemplateName and stationName -->
                 <div class="ui segment checklist-header-container" style="height: 15%; width: auto;">
                     <div class="ui grid">
@@ -77,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <!-- component panel -->
             <div class="ui segment three wide column component-panel-container"
@@ -88,7 +89,7 @@
 
 
     </div>
-    
+
     <div class="edit-panel-container"></div>
     <!-- <div id="edit2" class="edit-panel-container"></div> -->
 
@@ -97,12 +98,14 @@
 
 
     <div class="add-work-instruction">
-        <button class="ui icon button medium" id="add-work-instruction" style="background-color: #ff5f00; color:white; padding: 1% 4%;"><i class="plus white icon"></i></button>
+        <button class="ui icon button medium" id="add-work-instruction"
+            style="background-color: #ff5f00; color:white; padding: 1% 4%;"><i class="plus white icon"></i></button>
     </div>
 
 
     <div class="publish-json-container">
-        <button class="ui button big" id="publish-button" style="background-color: #ff5f00; color:white">PUBLISH</button>
+        <button class="ui button big" id="publish-button"
+            style="background-color: #ff5f00; color:white">PUBLISH</button>
     </div>
 
     <script src="../script/app.js" type="module"></script>
