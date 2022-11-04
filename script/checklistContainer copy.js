@@ -5,7 +5,7 @@ class ChecklistContainer {
     totalNoOfInstruction;
 
     constructor() {
-        this.checklistContainer = document.querySelector(".checklist-container");
+        this.checklistContainer = document.querySelector("checklist-container");
         this.templateName = document.querySelector(".checklist-name-input").value;
         this.stationName = document.querySelector(".station-name-input").value;
         this.index = 0;
@@ -56,7 +56,7 @@ class ChecklistContainer {
         const input = document.createElement("input");
         input.setAttribute("id", "processNameInput" + this.index);
         input.setAttribute("type", "text");
-        input.setAttribute("placeholder", "TYPE HERE");
+        input.setAttribute("placeholder", "  Type here");
         input.classList.add("process-name-input");
         //input.value = "   Type here";
         processNameContainer.appendChild(input);
@@ -82,7 +82,7 @@ class ChecklistContainer {
         const input = document.createElement("input");
         input.setAttribute("id", "checkLocationInput" + this.index);
         input.setAttribute("type", "text");
-        input.setAttribute("placeholder", "TYPE HERE")
+        input.setAttribute("placeholder", "  Type Here")
         input.classList.add("check-location-input");
         //input.value = "   Type here";
         checkLocationContainer.appendChild(input);
@@ -128,13 +128,13 @@ class ChecklistContainer {
         label.setAttribute("id", "checkDetailsInputLabel" + this.index);
         label.setAttribute("for", "checkDetailsInput" + this.index);
         label.textContent = "CHECK DETAILS";
-        //label.classList.add("check-details-input");
+        label.classList.add("check-details-input");
         checkDetailsContainer.appendChild(label);
 
         const input = document.createElement("input");
         input.setAttribute("id", "checkDetailsInput" + this.index);
         input.setAttribute("type", "text");
-        input.setAttribute("placeholder", "TYPE HERE");
+        input.setAttribute("placeholder", "  Type here");
         input.classList.add("check-details-input");
         //input.value = "   Type here";
         checkDetailsContainer.appendChild(input);
@@ -268,17 +268,6 @@ class ChecklistContainer {
             div.setAttribute("id", "imageComponent" + index);
             div.classList.add("image-component");
 
-            const label = document.createElement("p");
-            label.setAttribute("id", "commentLabel" + index);
-            label.innerHTML = "IMAGE UPLOAD";
-            label.style.textAlign = "center";
-            label.style.width = "100%";
-            div.appendChild(label);
-
-            const line = document.createElement("div");
-            line.setAttribute("id", "labelline1" + index);
-            line.classList.add("line");
-            div.appendChild(line);
             /*const button = document.createElement("button");
             button.setAttribute("id", "button" + index);
             button.classList.add("button-input");
@@ -309,52 +298,16 @@ class ChecklistContainer {
                 reader.addEventListener("load", (e) => {
                     const imageString = reader.result;
                     const imgInput = document.createElement("input");
-                    imgInput.setAttribute('id', 'imgInput' + index);
+                    imgInput.setAttribute('id','imgInput'+index);
                     imgInput.setAttribute('style', 'display: none');
-                    imgInput.setAttribute('value', imageString);
+                    imgInput.setAttribute('value',imageString);
                     div.appendChild(imgInput);
-
+                    
                 })
                 reader.readAsDataURL(file);
                 var url = URL.createObjectURL(input.files[0]);
                 display_image.src = url;
             })
-
-            if (document.getElementById("deleteImg" + index) === null) {
-                const delImg = document.createElement("a");
-                delImg.setAttribute("id", "deleteImg" + index);
-                //del.setAttribute("type","button");
-                // del.setAttribute("style", 'margin: 2rem');
-                delImg.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
-                // del.setAttribute("style", "display:none");
-
-                div.appendChild(delImg);
-                delImg.onclick = function () {
-                    // //const del = document.getElementById("inputField1Container" + index);
-                    imageContainer.innerHTML = '';
-                }
-            }
-
-            div.onmouseenter = function () {
-                mouseEnter();
-            }
-
-            div.onmouseleave = function () {
-                mouseLeave();
-            }
-
-            function mouseEnter() {
-                console.log(Event.target);
-
-                const delonHover = document.getElementById("deleteImg" + index);
-                delonHover.setAttribute("style", "display:block");
-                delonHover.setAttribute("style", "cursor:pointer");
-            };
-
-            function mouseLeave() {
-                document.getElementById("deleteImg" + index).style.display = "none";
-
-            }
 
 
             div.appendChild(display_image);
@@ -379,59 +332,17 @@ class ChecklistContainer {
             div.setAttribute("id", "commentComponent" + index);
             div.classList.add("comment-component");
 
-            const label = document.createElement("p");
+            const label = document.createElement("label");
             label.setAttribute("id", "commentLabel" + index);
-            label.innerHTML = "COMMENT";
-            label.style.textAlign = "center";
-            label.style.width = "100%";
+            label.innerHTML = "Comment";
             div.appendChild(label);
 
-            const line = document.createElement("div");
-            line.setAttribute("id", "labelline1" + index);
-            line.classList.add("line");
-            div.appendChild(line);
-
-            if (document.getElementById("deleteComment" + index) === null) {
-                const delComment = document.createElement("a");
-                delComment.setAttribute("id", "deleteComment" + index);
-                //del.setAttribute("type","button");
-                // del.setAttribute("style", 'margin: 2rem');
-                delComment.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
-                // del.setAttribute("style", "display:none");
-
-                div.appendChild(delComment);
-                delComment.onclick = function () {
-                    // //const del = document.getElementById("inputField1Container" + index);
-                    commentContainer.innerHTML = '';
-                }
-            }
-
-            div.onmouseenter = function () {
-                mouseEnter();
-            }
-
-            div.onmouseleave = function () {
-                mouseLeave();
-            }
-
-            function mouseEnter() {
-                console.log(Event.target);
-
-                const delonHover = document.getElementById("deleteComment" + index);
-                delonHover.setAttribute("style", "display:block");
-                delonHover.setAttribute("style", "cursor:pointer");
-            };
-
-            function mouseLeave() {
-                document.getElementById("deleteComment" + index).style.display = "none";
-
-            }
-
-            // const input = document.createElement("textarea");
-            // input.setAttribute("id", "commentInput" + index);
-            // input.classList.add("commentInputBox");
-            // input.disabled = true;
-            // div.appendChild(input);
+            const input = document.createElement("textarea");
+            input.setAttribute("id", "commentInput" + index);
+            // input.setAttribute("style", "margin-left:10px");
+            input.classList.add("commentInputBox");
+            input.disabled = true;
+            div.appendChild(input);
 
             //div.appendChild(button);
             //button.appendChild(input);
@@ -455,39 +366,29 @@ class ChecklistContainer {
                 const div = document.createElement("div");
                 // // div.classList.add("hover-div");
                 // // div.setAttribute("draggable", "true");
-                div.classList.add("input-field1-component");
                 div.setAttribute("id", "inputField1Component" + index);
                 const label = document.createElement("p");
                 label.setAttribute("id", "inputField1Label" + index);
-                label.classList.add("label-field1");
                 label.innerHTML = "MC";
                 label.setAttribute("style", "margin:5%");
-                // label.style.width = "10ch";
-                label.style.textAlign = "center";
-                label.style.width = "auto";
+                label.style.width = "10ch";
                 div.appendChild(label);
-
-                const line = document.createElement("div");
-                line.setAttribute("id", "labelline1" + index);
-                line.classList.add("line");
-                div.appendChild(line);
-
-                // const input = document.createElement("input");
-                // input.setAttribute("id", "inputField1Input" + index);
-                // input.setAttribute("type", "text");
-                // input.setAttribute("style", "margin-left:10px");
-                // input.style.width = "17ch";
-                // input.disabled = true;
-                // div.appendChild(input);
+                const input = document.createElement("input");
+                input.setAttribute("id", "inputField1Input" + index);
+                input.setAttribute("type", "text");
+                input.setAttribute("style", "margin-left:10px");
+                input.style.width = "17ch";
+                input.disabled = true;
+                div.classList.add("input-field1-component");
+                div.appendChild(input);
 
                 if (document.getElementById("delete1" + index) === null) {
                     const del = document.createElement("a");
                     del.setAttribute("id", "delete1" + index);
                     //del.setAttribute("type","button");
-                    // del.setAttribute("style", 'margin: 2rem');
-                    del.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
-                    // del.setAttribute("style", "display:none");
-
+                    del.setAttribute("style", 'margin: 2rem');
+                    del.innerHTML += '<i class="material-icons">delete</i>';
+                    del.setAttribute("style", "display:none");
                     div.appendChild(del);
                     del.onclick = function () {
                         // //const del = document.getElementById("inputField1Container" + index);
@@ -499,34 +400,35 @@ class ChecklistContainer {
                 }
 
 
+
                 if (document.getElementById("edit1" + index) === null) {
                     var isAlphabet = false;
                     var isNumeric = false;
                     const edit1 = document.createElement("a");
                     edit1.setAttribute("id", "edit1" + index);
-                    edit1.innerHTML += '<i class="edit outline large black icon" style="float:right"></i>';
-                    // edit1.setAttribute("style", "display:none");
+                    edit1.innerHTML += '<span class="material-icons">edit</span>';
+
+                    edit1.setAttribute("style", "display:none");
                     div.appendChild(edit1);
                     edit1.onclick = function () {
+
                         var x = document.createElement("div");
                         x.setAttribute("id", "edit" + index);
                         x.classList.add("edit-panel-container");
                         x.setAttribute("style", "display:block");
                         // x.style.display = "block"
                         const he3 = document.createElement("h3");
-                        he3.innerHTML = "<h3>EDIT INPUT LABEL</h3>"
+                        he3.innerHTML = "<h3>Edit Header</h3>"
 
 
                         const inp = document.createElement("input");
                         inp.setAttribute("type", "text");
                         inp.setAttribute("id", "txt" + index);
-                        inp.classList.add("inp-edit-panel");
                         inp.setAttribute("style", "width:80%");
                         const button = document.createElement("a");
                         button.setAttribute("id", "icn" + index);
                         button.setAttribute("style", "margin-left:3%");
-                        button.innerHTML += '<i class="check circle outline black large icon"></i>';
-                        button.style.cursor = "pointer";
+                        button.innerHTML += '<span class="material-symbols-outlined">check_circle</span>';
                         button.onclick = function () {
                             x.style.display = "none";
                             var val = document.getElementById("txt" + index).value;
@@ -566,7 +468,6 @@ class ChecklistContainer {
                         radioBtn2.setAttribute("id", "radioBtn2" + index);
                         radioBtn2.setAttribute("type", "radio");
                         radioBtn2.setAttribute("style", "width:7%");
-                        radioBtn2.style.marginLeft = "12%";
                         radioBtn2.onclick = function () {
                             isNumeric = true;
                             document.getElementById("radioBtn1" + index).disabled = "true";
@@ -687,31 +588,24 @@ class ChecklistContainer {
                 const label = document.createElement("p");
                 label.setAttribute("id", "inputField2Label" + index);
                 label.innerHTML = "QA";
-                // label.style.width = "10ch";
+                label.style.width = "10ch";
                 label.setAttribute("style", "margin:5%");
-                label.style.textAlign = "center";
-                label.style.width = "auto";
                 div.appendChild(label);
 
-                const line = document.createElement("div");
-                line.setAttribute("id", "labelline1" + index);
-                line.classList.add("line");
-                div.appendChild(line);
-
-                // const input = document.createElement("input");
-                // input.setAttribute("id", "inputField2Input" + index);
-                // input.setAttribute("type", "text");
-                // input.setAttribute("size", "10rem");
-                // input.setAttribute("style", "margin-left:5%");
-                // input.style.width = "17ch";
-                // input.disabled = true;
-                // div.appendChild(input);
+                const input = document.createElement("input");
+                input.setAttribute("id", "inputField2Input" + index);
+                input.setAttribute("type", "text");
+                input.setAttribute("size", "10rem");
+                input.setAttribute("style", "margin-left:5%");
+                input.style.width = "17ch";
+                input.disabled = true;
+                div.appendChild(input);
 
                 if (document.getElementById("delete2" + index) === null) {
                     const del1 = document.createElement("a");
                     del1.setAttribute("id", "delete2" + index);
-                    //del1.setAttribute("style", 'margin-left: 2rem');
-                    del1.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
+                    del1.setAttribute("style", 'margin-left: 2rem');
+                    del1.innerHTML += '<span class="material-icons">delete</span>';
 
                     div.appendChild(del1);
                     del1.onclick = function () {
@@ -730,7 +624,7 @@ class ChecklistContainer {
                     edit2.setAttribute("id", "edit2" + index);
                     //edit2.setAttribute("style", 'margin-right: 1rem');
                     edit2.setAttribute("style", 'margin: 1rem');
-                    edit2.innerHTML += '<i class="edit outline large black icon" style="float:right"></i>';
+                    edit2.innerHTML += '<span class="material-icons">edit</span>';
 
                     edit2.setAttribute("style", "display:none");
                     div.appendChild(edit2);
@@ -740,17 +634,15 @@ class ChecklistContainer {
                         x.classList.add("edit-panel-container");
                         x.setAttribute("style", "display:block");
                         const he3 = document.createElement("h3");
-                        he3.innerHTML = "<h3>EDIT INPUT LABEL</h3>"
+                        he3.innerHTML = "<h3>Edit Header</h3>"
                         const inp = document.createElement("input");
                         inp.setAttribute("type", "text");
                         inp.setAttribute("id", "txt" + index);
-                        inp.classList.add("inp-edit-panel");
                         inp.setAttribute("style", "width:80%");
                         const button = document.createElement("a");
                         button.setAttribute("id", "icn" + index);
                         button.setAttribute("style", "margin-left:3%");
-                        button.innerHTML += '<i class="check circle outline black large icon"></i>';
-                        button.style.cursor = "pointer";
+                        button.innerHTML += '<span class="material-symbols-outlined">check_circle</span>';
                         button.onclick = function () {
                             x.style.display = "none";
                             var val = document.getElementById("txt" + index).value;
@@ -925,38 +817,28 @@ class ChecklistContainer {
             judgementContainer.classList.remove("over");
             const label = document.createElement("p");
             label.setAttribute("id", "judgementLabel" + index);
-            label.textContent = "JUDGEMENT";
-            label.style.textAlign = "center";
-            // label.style.width = "auto";
-            // label.setAttribute("style", "margin-left:2%");
+            label.textContent = "STATUS";
+            label.setAttribute("style", "margin-left:2%");
             judgementComponent.appendChild(label);
 
-            const line = document.createElement("div");
-            line.setAttribute("id", "labelline1" + index);
-            line.classList.add("line");
-            judgementComponent.appendChild(line);
 
-
-            const button = document.createElement("div");
-            button.setAttribute("id", "okButton" + index);
-            button.innerHTML += '<button class="ui green basic icon button" style="padding: 2% 6%;"><i class="check circle outline black large icon"></i></button><button class="ui red basic icon button" style="margin-left:10%;padding: 2% 6%"><i class="times circle outline black large icon"></i></button>';
-            button.style.textAlign = "center";
-            button.style.marginTop = "2%";
-            button.style.width = "auto";
-            judgementComponent.appendChild(button);
-            // okButton.classList.add("judgement-button");
-            // okButton.classList.add("judgement-ok-button");
+            const okButton = document.createElement("button");
+            okButton.setAttribute("id", "okButton" + index);
+            okButton.innerHTML += '<span class="material-symbols-outlined">check_circle</span>';
+            judgementComponent.appendChild(okButton);
+            okButton.classList.add("judgement-button");
+            okButton.classList.add("judgement-ok-button");
             // okButton.addEventListener("click", function (Event) {
             //     okButton.style.backgroundColor = "green";
             //     ngButton.disabled = "true";
             //     ngButton.style.boxShadow = "false";
             // });
-            // const ngButton = document.createElement("div");
-            // ngButton.setAttribute("id", "ngButton" + index);
-            // ngButton.innerHTML += '<span class="ui red basic button">Red</span>';
-            // ngButton.classList.add("judgement-button");
-            // ngButton.classList.add("judgement-ng-button");
-            // okButton.appendChild(ngButton);
+            const ngButton = document.createElement("button");
+            ngButton.setAttribute("id", "ngButton" + index);
+            ngButton.innerHTML += '<span class="material-symbols-outlined">cancel</span >';
+            ngButton.classList.add("judgement-button");
+            ngButton.classList.add("judgement-ng-button");
+            judgementComponent.appendChild(ngButton);
             // ngButton.addEventListener("click", function (Event) {
             //     ngButton.style.backgroundColor = "red";
             //     okButton.disabled = "true";
@@ -965,8 +847,8 @@ class ChecklistContainer {
                 const del2 = document.createElement("a");
                 del2.setAttribute("id", "delete3" + index);
                 del2.setAttribute("style", "float:right");
-                del2.innerHTML += '<i class="trash alternate outline large black icon" style="float:right"></i>';
-                button.appendChild(del2);
+                del2.innerHTML += '<span class="material-icons">delete</span>';
+                judgementComponent.appendChild(del2);
                 del2.onclick = function () {
                     // //const del = document.getElementById("inputField1Container" + index);
                     document.getElementById("judgementComponent" + index).remove();

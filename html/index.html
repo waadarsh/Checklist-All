@@ -12,15 +12,33 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
-<body>
-    <img id="logoImg" src="../static/renault_nissan_logo.png">
 
-    <h2>CREATING A NEW CHECKLIST</h2>
+<body class="container">
+    <div class="ui top attached text menu" style="height: 10%; background-color: #EFEFEF">
+        <div class="item" style="width: 10%; margin-left: 2%;">
+            <img src="/static/renault_nissan_logo.png" style="width: 100%">
+        </div>
+        <div style="margin-left:65%; margin-top: 2.5%;">
+            <span id="date"></span>
+            &ensp;
+            <span id="time"></span>
+        </div>
+        <div style="margin-top: 1%;margin-left: 2%;text-align: center">
+            <i class="huge user circle outline icon"></i><br>
+            <span><strong>ADMIN</strong></span>
+        </div>
+    </div>
 
-    <div class="checklist-container">
-
+    <!-- <div class="checklist-container">
+        <div class="label-container" style="margin: 1%;">
+            <h2>CREATING A NEW CHECKLIST</h2>
+        </div>
         <div class="checklist-header-container">
             <div class="checklist-name-container">
                 <label for="checklist-name-input">TEMPLATE NAME</label>
@@ -33,14 +51,44 @@
                     placeholder="   Type here">
             </div>
         </div>
+    </div> -->
 
-        
-    </div>
-
-    <div class="component-panel-container">
+    <!-- <div class="component-panel-container">
         <h3 style="color: #ff5f00">COMPONENT SHELF</h3>
-    </div>
+    </div> -->
+    <div class="main-container">
+        <div class="label-container" style="margin: 1%;">
+            <h3>CREATING A NEW CHECKLIST</h3>
+        </div>
+        <div class="ui grid" style="margin: 1%">
+            <div class="checklist-container ui segment twelve wide column " style="background-color: #EFEFEF; height: fit-content;">
+                <!-- TemplateName and stationName -->
+                <div class="ui segment checklist-header-container" style="height: 15%; width: auto;">
+                    <div class="ui grid">
+                        <div class="ui input six wide column checklist-name-container" style="min-width: 45%;">
+                            <label for="checklist-name-input">TEMPLATE NAME</label><br>
+                            <input type="text" class="checklist-name-input" id="checklist-name-input"
+                                placeholder="TYPE HERE">
+                        </div>
+                        <div class="ui input six wide column station-name-container" style="min-width: 45%;">
+                            <label for="station-name-input">STATION NAME</label><br>
+                            <input type="text" class="station-name-input" id="station-name-input"
+                                placeholder="TYPE HERE">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- component panel -->
+            <div class="ui segment three wide column component-panel-container"
+                style="margin-top:-1px; margin-left: 75%; height: fit-content; position: fixed;width: auto;">
+                <h3 style="color: #ff5f00; text-align: center;">COMPONENT SHELF</h3>
+            </div>
+        </div>
 
+
+    </div>
+    
     <div class="edit-panel-container"></div>
     <!-- <div id="edit2" class="edit-panel-container"></div> -->
 
@@ -49,18 +97,22 @@
 
 
     <div class="add-work-instruction">
-        <button class="add-work-instruction-button" id="add-work-instruction">+</button>
+        <button class="ui icon button medium" id="add-work-instruction" style="background-color: #ff5f00; color:white; padding: 1% 4%;"><i class="plus white icon"></i></button>
     </div>
 
 
     <div class="publish-json-container">
-        <button class="publish-button" id="publish-button">PUBLISH</button>
+        <button class="ui button big" id="publish-button" style="background-color: #ff5f00; color:white">PUBLISH</button>
     </div>
 
     <script src="../script/app.js" type="module"></script>
     <script src="../script/checklistContainer.js" type="module"></script>
     <script src="../script/component.js" type="module"></script>
     <script src="../script/createjson.js" type="module"></script>
+    <script>
+        document.getElementById("date").innerHTML = new Date().toLocaleDateString();
+        document.getElementById("time").innerHTML = new Date().toLocaleTimeString();
+    </script>
 
 </body>
 

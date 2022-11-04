@@ -48,29 +48,6 @@ commentComponentObj.componentObj.addEventListener("dragenter", function(Event) {
     commentComponentObj.handleDragEnter(Event);
 });
 
-// inputFieldComponentObj.componentObj.style.backgroundColor="white";
-// inputFieldComponentObj.componentObj.style.backgroundImage="url('../static/InputFieldImage.svg')";
-// inputFieldComponentObj.componentObj.style.backgroundRepeat="no-repeat";
-// inputFieldComponentObj.componentObj.style.backgroundPosition="center";
-
-
-// imageComponentObj.componentObj.style.backgroundColor="white";
-// imageComponentObj.componentObj.style.backgroundImage="url('../static/ImageUpload.png')";
-// imageComponentObj.componentObj.style.backgroundRepeat="no-repeat";
-// imageComponentObj.componentObj.style.backgroundPosition="center";
-
-
-// judgementComponentObj.componentObj.style.backgroundColor="white";
-// judgementComponentObj.componentObj.style.backgroundImage="url('../static/Judgement.png')";
-// judgementComponentObj.componentObj.style.backgroundRepeat="no-repeat";
-// judgementComponentObj.componentObj.style.backgroundPosition="center";
-
-
-// commentComponentObj.componentObj.style.backgroundColor="white";
-// commentComponentObj.componentObj.style.backgroundImage="url('../static/Comment.png')";
-// commentComponentObj.componentObj.style.backgroundRepeat="no-repeat";
-// commentComponentObj.componentObj.style.backgroundPosition="center";
-
 inputFieldComponentObj.componentObj.style.backgroundColor="white";
 inputFieldComponentObj.componentObj.style.backgroundImage="url('../static/InputFieldImage.svg')";
 inputFieldComponentObj.componentObj.style.backgroundRepeat="no-repeat";
@@ -107,6 +84,7 @@ commentComponentObj.componentObj.style.paddingTop="25%";
 commentComponentObj.componentObj.style.width="50%";
 commentComponentObj.componentObj.style.textAlign="center";
 commentComponentObj.componentObj.style.float="right";
+
 
 const addWorkInstructionButton = document.getElementById("add-work-instruction");
 addWorkInstructionButton.addEventListener("click", function() {
