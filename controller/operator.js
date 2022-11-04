@@ -12,7 +12,7 @@ var taskDtlId = null;
 exports.getTemplateList = function(req, res) {
 
     //const db = pgp('postgresql://postgres:air2020@localhost:5432/rnaipl');
-    db.any("SELECT chklst_id,chklst_name,station_name,total_no_instruction FROM chklst_hdr WHERE status_code = 110;")
+    db.any("SELECT chklst_id,chklst_name,station_name,total_no_instruction FROM chklst_hdr WHERE status_code = 120;")
     .then((data) => {
         templateList=data;
         res.render("templateList", templateList);

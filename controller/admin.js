@@ -26,7 +26,7 @@ exports.getAdmin = function(req, res) {
 
         try {
                 await client.query('BEGIN')
-                const chklstHdr = 'INSERT INTO chklst_hdr(chklst_name,station_name,total_no_instruction,status_code) VALUES ($1,$2,$3,110)'
+                const chklstHdr = 'INSERT INTO chklst_hdr(chklst_name,station_name,total_no_instruction,status_code) VALUES ($1,$2,$3,120)'
                 const chklstHdrVal = await client.query(chklstHdr,[data.templateName, data.stationName,data.totalNoOfInstruction])
                 for (let i = 0; i < data.totalNoOfInstruction; i++) {
                     console.log('\x1b[93m--------------------------------------------------------');
