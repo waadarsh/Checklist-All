@@ -3,16 +3,20 @@
     <% if(landing.length) { %>
         <div class="ui grid">
             <div class="left floated one wide column">
-                <div class="ui secondary vertical pointing menu"
-                    style="margin-top: 20%; width:fit-content; margin-left: 7%">
+                <div class="ui vertical segment" style="margin-top: 20%; width:fit-content; margin-left: 25%">
                     <a class="active item">
                         <img class="ui tiny image" src="../static/clipboard.png">
-                        <p style="margin: 2% 0"><strong>CHECKLIST</strong></p>
+                        <p style="margin: 2% 0; color: black;"><strong><u
+                                    style="text-decoration-style: solid; text-decoration-color: #ff5f00; text-underline-position:under; text-decoration-thickness: 20%; ">CHECKLIST</u></strong>
+                        </p>
                     </a><br>
-                    <a class="item">
-                        <img class="ui tiny image" src="../static/report.png">
-                        <p style="margin: 2% 10%"><strong>REPORTS</strong></p>
-                    </a>
+                    <form action="http://localhost:3000/admin/report" method="post">
+                        <button class="item" style="background-color: white; border:none">
+                            <img class="ui tiny image" src="../static/report.png">
+                            <p style="margin: 2% 10%; color: black;"><strong>REPORTS</strong></p>
+                        </button>
+                    </form>
+
                 </div>
             </div>
             <div class="left floated fifteen wide column">

@@ -21,3 +21,6 @@ exports.postlanding = function(req, res) {
     console.log("hi");
     res.redirect("../admin/adminPanel");
 };
+
+
+

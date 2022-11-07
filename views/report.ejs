@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src=”https://code.jquery.com/jquery-3.6.0.min.js”></script>
+</head>
+
+<%- include('AdminHeader'); -%>
+    <div class="ui segment" style="background-color: #EFEFEF; margin: 1%; height:fit-content">
+        <div style="margin-left: 1%">
+            <h3>REPORTS</h3>
+        </div>
+        <div class="ui top attached tabular menu">
+            <a class="active item" data-tab="first"><u
+                    style="text-decoration-color: #ff5f00; text-decoration-style: solid; text-underline-position: under; text-decoration-thickness: 2.5px;">Inspection
+                    Completed - <%= taskCount[1].Completed %></u></a>
+            <a class="item" data-tab="second">Inspection In Progress - <%= taskCount[0].InProgress %></a>
+            <a class="item" data-tab="third">Inspection Cancelled - <%= taskCount[2].Cancelled %></a>
+        </div>
+        <div class="ui bottom attached active tab segment" data-tab="first">
+            First
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="second">
+            Second
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="third">
+            Third
+        </div>
+    </div>
+    <script>
+        $('.menu .item').tab();
+        $('.ui.menu').find('.item').tab('change tab', 'first')
+    </script>
+
+</html>
