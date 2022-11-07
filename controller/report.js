@@ -9,21 +9,43 @@ exports.getReports = function(req, res) {
     .then(data => {
         taskCountByStatus = data;
         finalData.push(taskCountByStatus);
-        //console.log(finalData[0]);
-        res.locals.taskCount = finalData[0];
-        //console.log(res.locals.taskCount[0].InProgress);
-        res.render("report", res.locals.taskCount);
+        db.task(getCompletedTaskRecords)
+        .then(data => {
+            if(data.length != 0) {
+                finalData.push(data);
+            }
+            db.task(getInProgressTaskRecords)
+            .then(data => {
+                if(data.length != 0) {
+                    finalData.push(data);
+                }
+                db.task(getCancelledTaskRecords)
+                .then(data => {
+                    if(data.length != 0) {
+                        finalData.push(data);
+                    }
+                    res.locals.taskRecords = finalData;
+                    console.log(res.locals.taskRecords);
+                    res.render("report", res.locals.taskRecords);
+                }).catch(error => {
+                    console.log(error);
+                });
+            }).catch(error => {
+                console.log(error);
+            });
+        }).catch(error => {
+            console.log(error);
+        })
     }).catch(error => {
         console.log(error);
     })
-    
 };
-
 
 exports.postReports = function(req, res) {
     console.log("hi");
     res.redirect("../admin/report");
 };
+
 
 function getTaskCountByStatus(pgp) {
     var finalData = [];
@@ -56,4 +78,39 @@ function getTaskCountByStatus(pgp) {
         console.log(error);
     });
     //console.log(finalData);
+};
+
+function getCompletedTaskRecords(pgp) {
+    return pgp.any(`SELECT ch.chklst_name, ch.station_name, ch.total_no_instruction, th.created_dttm, th.updated_dttm
+    FROM public.task_hdr th
+    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '90';`)
+    .then(data => {
+        return data;
+    }).catch(error => {
+        console.log(error);
+    });
+};
+
+function getInProgressTaskRecords(pgp) {
+    return pgp.any(`SELECT ch.chklst_name, ch.station_name, ch.total_no_instruction, th.created_dttm, th.updated_dttm
+    FROM public.task_hdr th
+    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '0';`)
+    .then(data => {
+        //console.log(data);
+        return data;
+    }).catch(error => {
+        console.log(error);
+    });
+};
+
+function getCancelledTaskRecords(pgp) {
+    return pgp.any(`SELECT ch.chklst_name, ch.station_name, ch.total_no_instruction, th.created_dttm, th.updated_dttm
+    FROM public.task_hdr th
+    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '99';`)
+    .then(data => {
+        //console.log(data);
+        return data;
+    }).catch(error => {
+        console.log(error);
+    });
 };
