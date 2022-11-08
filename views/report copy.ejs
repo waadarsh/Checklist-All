@@ -9,21 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
         integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
-    </script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <style>
-        .line {
-            text-decoration-color: #ff5f00;
-            text-decoration-style: solid;
-            text-underline-position: under;
-            text-decoration-thickness: 2.5px;
-        }
-
-    </style>
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <%- include('AdminHeader'); -%>
     <div class="ui grid">
@@ -38,13 +26,14 @@
                     </form>
                 </a><br>
                 <form action="http://localhost:3000/admin/report" method="post">
-                    <button class="item" style="background-color: white; border:none; margin-top: 10%;">
+                    <button class="item" style="background-color: white; border:none">
                         <img class="ui tiny image" src="../static/report.png">
-                        <p style="margin: 2% 0%; color: black;"><strong><u
+                        <p style="margin: 2% 10%; color: black;"><strong><u
                                     style="text-decoration-style: solid; text-decoration-color: #ff5f00; text-underline-position:under; text-decoration-thickness: 20%;">REPORTS</u></strong>
                         </p>
                     </button>
                 </form>
+
             </div>
         </div>
         <div class="left floated fifteen wide column">
@@ -52,12 +41,12 @@
                 <div style="margin-left: 1%">
                     <h3>REPORTS</h3>
                 </div>
-                <div class="ui top attached secondary pointing tabular menu">
-                    <a class="active item" data-tab="Completed">Inspection Completed - <%= taskRecords[0][1].Completed
-                            %></a>
-                    <a class="black item" data-tab="second">Inspection In Progress - <%= taskRecords[0][0].InProgress %>
-                    </a>
-                    <a class="black item" data-tab="third">Inspection Cancelled - <%= taskRecords[0][2].Cancelled %></a>
+                <div class="ui top attached tabular menu">
+                    <a class="active item" data-tab="Completed"><u
+                            style="text-decoration-color: #ff5f00; text-decoration-style: solid; text-underline-position: under; text-decoration-thickness: 2.5px;">Inspection
+                            Completed - <%= taskRecords[0][1].Completed %></u></a>
+                    <a class="item" data-tab="second">Inspection In Progress - <%= taskRecords[0][0].InProgress %></a>
+                    <a class="item" data-tab="third">Inspection Cancelled - <%= taskRecords[0][2].Cancelled %></a>
                 </div>
                 <div class="ui bottom attached active tab segment" data-tab="Completed">
                     <% if(taskRecords[0][1].Completed !=0) { %>
@@ -97,8 +86,8 @@
                                         <td data-label="Details">
                                             <form action="http://localhost:3000/admin/reportDetail" method="post">
                                                 <button class="item" style="background-color: white; border:none">
-                                                    <p style="margin: 2% 10%; color: #3366CC; cursor: pointer;">
-                                                        Details</p>
+                                                    <p style="margin: 2% 10%; color: #3366CC; cursor: pointer;">Details
+                                                    </p>
                                                 </button>
                                             </form>
                                         </td>
@@ -119,8 +108,6 @@
             </div>
         </div>
     </div>
-    </div>
-
     <script>
         $('.menu .item').tab();
     </script>
