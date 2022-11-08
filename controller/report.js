@@ -1,5 +1,6 @@
 var pgp = require("pg-promise")();
 const { publicDecrypt } = require("crypto");
+const path = require("path");
 const db = pgp('postgresql://postgres:nissan@localhost:5432/rnaipl');
 
 exports.getReports = function(req, res) {
@@ -44,6 +45,10 @@ exports.getReports = function(req, res) {
 exports.postReports = function(req, res) {
     console.log("hi");
     res.redirect("../admin/report");
+};
+
+exports.postReportDetails = function(req, res) {
+    res.sendFile(path.join(__dirname,"../views/reportDetail.html"));
 };
 
 
