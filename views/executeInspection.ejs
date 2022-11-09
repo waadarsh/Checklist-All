@@ -14,13 +14,13 @@
     <% if(inspectionDetails.length) { %>
         <% inspectionDetails.forEach(function(data) { %>
             <header>
-                <div class="ui menu" style="background-color: #797979; color : #FFFFFF">
-                    <div style="margin-top: 0.75%; margin-left:1%;">
+                <div class="ui menu" style="background-color: #2c5597; color : #FFFFFF" >
+                    <div style="margin-top: 0.75%; margin-left:1%; margin-bottom: 0.75%; font-size: 20px ">
                         <strong id = "<%= data.chklst_id %>"> 
                             <%= data.chklst_name %> | <%= data.station_name %> 
                         </strong>  
                     </div>
-                    <div id="test" style="margin-top: 0.75%; margin-left:70%;"> 
+                    <div id="test" style="margin-top: 0.75%; margin-left:82%;"> 
                         <strong> 
                             <%= data.chklst_seq_nbr+1 %> / <%= data.total_no_instruction %> 
                         </strong>  
@@ -31,20 +31,20 @@
             <div class="ui segment" style="position: fixed; left: 2%; height: 80%; width: 96%">
 
                 <div style="margin-top: 0.05%;">
-                    <div style="margin-left:0.1%;"> <strong> PROCESS NAME </strong> : <%= data.process_name %> </div>
-                    <div style="margin-top:-1.70% ;margin-left:55%;"> <strong> CHECK LOCATION </strong> : <%= data.check_location %> </div> 
+                    <div style="margin-left:0.1%;"> <strong style="font-size: 17px;"> PROCESS NAME </strong> : <span style="font-size: 17px;"><%= data.process_name %></span> </div>
+                    <div style="margin-top:-1.60% ;margin-left:55%;"> <strong style="font-size: 17px;"> CHECK LOCATION </strong> : <span  style="font-size: 17px;"><%= data.check_location %> </span></div> 
                 </div>
 
                 <div class="line"></div>
 
                 <div>
-                    <h5>CHECK DETAILS</h5>
-                    <p style="margin-top:-1.10% ;"><%= data.check_details %> </p>
+                    <h5 style="font-size: 17px;">CHECK DETAILS : </h5><br>
+                    <p style="margin-top:-1.10% ; font-size: 17px;"><%= data.check_details %> </p>
                 </div>
 
                 <div class="line"></div>
 
-                <div id = "divider" style="border-left: 1.5px solid #707070; height: 62%; position: fixed; top: 27.75%; left: 37.5%;"></div>
+                <div id = "divider" style="border-left: 1.5px solid #707070; height: 58%; position: fixed; top: 30%; left: 37.5%;"></div>
 
                                 <div class = "ui segment" id = "image-container" style="height: 55%; width: 33%; position: fixed; top: 29%; left: 3%;">
                                     <div class="column">
@@ -53,7 +53,7 @@
                                             <% if(data.image != "NA") { %>
                                                 <img src="<%= data.image %>" style="height: 100%;" >
                                             <% } else { %>
-                                                <div class="ui icon header">
+                                                <div class="ui icon header" style="color: #8a8a8a;">
                                                 NO IMAGE AVAILABLE
                                                 </div>
                                             <% } %>
@@ -65,34 +65,34 @@
                         <% for(var i = 0; i < data.workInstructions.length; i++) { %>
 
                             <% if(data.workInstructions[i].component_name === "inputField1") { %>
-                                <div class = "ui segment" id = "input-field1" style="height: 15%; width: 27%; position: fixed; top: 29%; left: 39%">
-                                    <p style="margin-top: -0.5em;"><%= data.workInstructions[i].property_value %></p><br>
-                                    <input type="text" name = "input-field1-input" id = "input-field1-input" size="40%" placeholder="Type Here" class="textInput">
+                                <div class = "ui segment" id = "input-field1" style="height: 13%; width: 27%; position: fixed; top: 29%; left: 39%">
+                                    <p style="margin-top: -0.5em;font-weight: 600;"><%= data.workInstructions[i].property_value %></p><br>
+                                    <input type="text" name = "input-field1-input" id = "input-field1-input" size="40%" placeholder="   Type Here" class="textInput" style="border: 0.5px solid; border-radius: 4px;">
                                 </div>
                             <% } %>
 
                             <% if(data.workInstructions[i].component_name === "inputField2") { %>
-                                <div class = "ui segment" id = "input-field2" style="height: 15%; width: 27%; position: fixed; top: 29%; left: 69%">
-                                    <p style="margin-top: -0.5em;"><%= data.workInstructions[i].property_value %></p><br>
-                                    <input type="text" name = "input-field2-input" id = "input-field2-input" size="40%" placeholder="Type Here" class="textInput">
+                                <div class = "ui segment" id = "input-field2" style="height: 13%; width: 27%; position: fixed; top: 29%; left: 69%">
+                                    <p style="margin-top: -0.5em; font-weight: 600;"><%= data.workInstructions[i].property_value %></p><br>
+                                    <input type="text" name = "input-field2-input" id = "input-field2-input" size="40%" placeholder="   Type Here" class="textInput" style="border: 0.5px solid; border-radius: 4px;">
                                 </div>
                             <% } %>
 
                             <% if(data.workInstructions[i].component_name === "comment") { %>
-                                <div class = "ui segment" id = "comment" style="height: 15%; width: 57%; position: fixed; top: 49%; left: 39%">
-                                    <p>Comment</p>
-                                    <textarea class="textArea" name = "comment-input" id = "comment-input" placeholder="Type Here" size="40%"></textarea>
+                                <div class = "ui segment" id = "comment" style="height: 17%; width: 57%; position: fixed; top: 49%; left: 39%">
+                                    <p style="font-weight: 600;">Comment</p><br>
+                                    <textarea class="textArea" name = "comment-input" id = "comment-input" placeholder="    Type Here" size="20%" style="border: 0.5px solid; border-radius: 4px; height: 60%;"></textarea>
                                 </div>
                             <% } %>
 
                             <% if(data.workInstructions[i].component_name === "judgement") { %>
                                 <div class="ui segment" id = "judgement" style="height: 15%; width: 57%; position: fixed; top: 69%; left: 39%">
-                                    <p>JUDGEMENT</p>
+                                    <p style="font-weight: 600;">JUDGEMENT</p>
                                         <div style="margin-top: 1%;">
-                                            <button id = "judgement-ok-button" class="judgement-ok-button" onclick="handleOKButtonClick()" style="position: fixed; top: 76%; left: 50%; width: 7.5%; height: 5%;">
+                                            <button id = "judgement-ok-button" class="judgement-ok-button" onclick="handleOKButtonClick()" style="position: fixed; top: 76%; left: 50%; width: 7.5%; height: 5%; border: 0.5px solid; border-radius: 4px;">
                                                 <span class="material-symbols-outlined">done</span>
                                             </button>
-                                            <button id = "judgement-ng-button" onclick="handleNGButtonClick()" style="position: fixed; top: 76%; left: 70%; width: 7.5%; height: 5%;">
+                                            <button id = "judgement-ng-button" onclick="handleNGButtonClick()" style="position: fixed; top: 76%; left: 70%; width: 7.5%; height: 5%; border: 0.5px solid; border-radius: 4px;">
                                                 <span class="material-symbols-outlined">close</span>
                                             </button>
                                         </div>                        
@@ -111,7 +111,7 @@
                     <input type="hidden" name="posthiddenInputField2Value" id="posthiddenInputField2Value" value="default">
                     <input type="hidden" name="posthiddenCommentValue" id="posthiddenCommentValue" value="default">
                     <input type="hidden" name="posthiddenJudgementButtonValue" id="posthiddenJudgementButtonValue" value="default">
-                    <div class="blue ui buttons" style="position: fixed; top: 92%; left: 90%;">
+                    <div class="blue ui buttons" style="position: fixed; top: 92%; left: 90%; width: 7.5%; height: 5%; border: 0.5px solid; border-radius: 4px;">
                         <button type="submit" class = "ui button">NEXT</button>
                     </div>
                 </form>

@@ -71,42 +71,42 @@ commentComponentObj.componentObj.addEventListener("dragenter", function(Event) {
 // commentComponentObj.componentObj.style.backgroundRepeat="no-repeat";
 // commentComponentObj.componentObj.style.backgroundPosition="center";
 
-inputFieldComponentObj.componentObj.style.backgroundColor="white";
-inputFieldComponentObj.componentObj.style.backgroundImage="url('../static/InputFieldImage.svg')";
+// inputFieldComponentObj.componentObj.style.backgroundColor="white";
+inputFieldComponentObj.componentObj.style.backgroundImage="url('../static/Input Field icon.png')";
 inputFieldComponentObj.componentObj.style.backgroundRepeat="no-repeat";
 inputFieldComponentObj.componentObj.style.backgroundPosition="center";
-inputFieldComponentObj.componentObj.style.paddingTop="25%";
-inputFieldComponentObj.componentObj.style.width="50%";
+inputFieldComponentObj.componentObj.style.paddingTop="30%";
+inputFieldComponentObj.componentObj.style.width="40%";
 inputFieldComponentObj.componentObj.style.textAlign="center";
-inputFieldComponentObj.componentObj.style.float="right";
+inputFieldComponentObj.componentObj.style.float="left";
 
 
-imageComponentObj.componentObj.style.backgroundColor="white";
-imageComponentObj.componentObj.style.backgroundImage="url('../static/ImageUpload.png')";
+// imageComponentObj.componentObj.style.backgroundColor="white";
+imageComponentObj.componentObj.style.backgroundImage="url('../static/Image upload icon.png')";
 imageComponentObj.componentObj.style.backgroundRepeat="no-repeat";
 imageComponentObj.componentObj.style.backgroundPosition="center";
-imageComponentObj.componentObj.style.paddingTop="25%";
-imageComponentObj.componentObj.style.width="50%";
+imageComponentObj.componentObj.style.paddingTop="30%";
+imageComponentObj.componentObj.style.width="40%";
 imageComponentObj.componentObj.style.textAlign="center";
-imageComponentObj.componentObj.style.float="right";
+imageComponentObj.componentObj.style.float="left";
 
-judgementComponentObj.componentObj.style.backgroundColor="white";
-judgementComponentObj.componentObj.style.backgroundImage="url('../static/Judgement.png')";
+// judgementComponentObj.componentObj.style.backgroundColor="white";
+judgementComponentObj.componentObj.style.backgroundImage="url('../static/Judgement icon.png')";
 judgementComponentObj.componentObj.style.backgroundRepeat="no-repeat";
 judgementComponentObj.componentObj.style.backgroundPosition="center";
-judgementComponentObj.componentObj.style.paddingTop="25%";
-judgementComponentObj.componentObj.style.width="50%";
+judgementComponentObj.componentObj.style.paddingTop="30%";
+judgementComponentObj.componentObj.style.width="40%";
 judgementComponentObj.componentObj.style.textAlign="center";
-judgementComponentObj.componentObj.style.float="right";
+judgementComponentObj.componentObj.style.float="left";
 
-commentComponentObj.componentObj.style.backgroundColor="white";
-commentComponentObj.componentObj.style.backgroundImage="url('../static/Comment.png')";
+// commentComponentObj.componentObj.style.backgroundColor="white";
+commentComponentObj.componentObj.style.backgroundImage="url('../static/Comment icon.png')";
 commentComponentObj.componentObj.style.backgroundRepeat="no-repeat";
 commentComponentObj.componentObj.style.backgroundPosition="center";
-commentComponentObj.componentObj.style.paddingTop="25%";
-commentComponentObj.componentObj.style.width="50%";
+commentComponentObj.componentObj.style.paddingTop="30%";
+commentComponentObj.componentObj.style.width="40%";
 commentComponentObj.componentObj.style.textAlign="center";
-commentComponentObj.componentObj.style.float="right";
+commentComponentObj.componentObj.style.float="left";
 
 const addWorkInstructionButton = document.getElementById("add-work-instruction");
 addWorkInstructionButton.addEventListener("click", function() {
