@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execute Inspection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<%- include('AdminHeader'); -%>
+    <div class="ui grid">
+        <div class="left floated one wide column">
+            <div class="ui vertical segment" style="margin-top: 20%; width:fit-content; margin-left: 25%">
+                <a class="active item">
+                    <form action="http://localhost:3000/landing/main" method="get">
+                        <button class="item" style="background-color: white; border:none">
+                            <img class="ui tiny image" src="../static/clipboard.png">
+                            <p style="margin: 2% 0; color: black;"><strong>CHECKLIST</strong></p>
+                        </button>
+                    </form>
+                </a><br>
+                <form action="http://localhost:3000/admin/report" method="post">
+                    <button class="item" style="background-color: white; border:none">
+                        <img class="ui tiny image" src="../static/report.png">
+                        <p style="margin: 2% 10%; color: black;"><strong><u
+                                    style="text-decoration-style: solid; text-decoration-color: #ff5f00; text-underline-position:under; text-decoration-thickness: 20%;">REPORTS</u></strong>
+                        </p>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+        <div class="left floated fifteen wide column">
+            <div class="ui segment" style="background-color: #EFEFEF; margin: 1%; height:fit-content">
+                <div style="margin-left: 1%">
+                    <h3>REPORTS</h3>
+                </div>
+                <div class="ui top attached tabular menu">
+                    <a class="active item" data-tab="Completed"><u
+                            style="text-decoration-color: #ff5f00; text-decoration-style: solid; text-underline-position: under; text-decoration-thickness: 2.5px;">Inspection
+                            Completed - <%= taskRecords[0][1].Completed %></u></a>
+                    <a class="item" data-tab="second">Inspection In Progress - <%= taskRecords[0][0].InProgress %></a>
+                    <a class="item" data-tab="third">Inspection Cancelled - <%= taskRecords[0][2].Cancelled %></a>
+                </div>
+                <div class="ui bottom attached active tab segment" data-tab="Completed">
+                    <% if(taskRecords[0][1].Completed !=0) { %>
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Checklist Name</th>
+                                    <th>Station Name</th>
+                                    <th>No of Tasks</th>
+                                    <th>Created On</th>
+                                    <th>Completed On</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(var i=0; i < taskRecords[1].length; i++) { %>
+                                    <tr>
+                                        <td data-label="No">
+                                            <%= i+1 %>
+                                        </td>
+                                        <td data-label="Checklist Name">
+                                            <%= taskRecords[1][i].chklst_name %>
+                                        </td>
+                                        <td data-label="Station Name">
+                                            <%= taskRecords[1][i].station_name %>
+                                        </td>
+                                        <td data-label="No of Tasks">
+                                            <%= taskRecords[1][i].total_no_instruction %>
+                                        </td>
+                                        <td data-label="Created On">
+                                            <%= taskRecords[1][i].created_dttm %>
+                                        </td>
+                                        <td data-label="Completed On">
+                                            <%= taskRecords[1][i].updated_dttm %>
+                                        </td>
+                                        <td data-label="Details">
+                                            <form action="http://localhost:3000/admin/reportDetail" method="post">
+                                                <button class="item" style="background-color: white; border:none">
+                                                    <p style="margin: 2% 10%; color: #3366CC; cursor: pointer;">Details
+                                                    </p>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                        <% } else { %>
+                            No data available!!!!
+                            <% } %>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="second">
+                    Second
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="third">
+                    Third
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.menu .item').tab();
+    </script>
+
+</html>

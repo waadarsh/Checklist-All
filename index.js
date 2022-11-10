@@ -9,7 +9,9 @@ const PORT = 3000;
 const app = express();
 
 const adminRouter = require("./routes/admin");
+const landingRouter = require("./routes/landing");
 const operatorRouter = require("./routes/operator");
+const reportRouter = require("./routes/report");
 const { application } = require('express');
 
 app.set("views", path.resolve(__dirname,"views"));
@@ -19,6 +21,7 @@ app.use("/css", express.static("css"));
 app.use("/static", express.static("static"));
 app.use("/script", express.static("script"));
 app.use("/html", express.static("html"));
+app.use("/vendor", express.static("vendor"));
 
 app.use(bodyParser.json({ limit: '1024mb' }));
 app.use(bodyParser.text());
@@ -26,6 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/admin", adminRouter);
 app.use("/operator", operatorRouter);
+app.use("/landing", landingRouter);
+app.use("/admin", reportRouter);
+
 
 app.use(function(req, res, next) {
     next(createError(404));

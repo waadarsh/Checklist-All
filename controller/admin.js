@@ -20,7 +20,6 @@ exports.getAdmin = function(req, res) {
  exports.postAdmin = function(req, res) { 
     const data = req.body;
     console.log(data.workInstructions[0].workArea.inputField1);
-
     (async () => {
         const client = await pool.connect();
 
@@ -160,6 +159,7 @@ exports.getAdmin = function(req, res) {
                 console.log('\x1b[92m--------------------------------------------------------'); 
                 console.log('COMMIT Successful');
                 console.log('--------------------------------------------------------\x1b[0m \n');
+                res.sendFile(path.join(__dirname, '../views/ic.html'));
         } catch (e) {
             await client.query('ROLLBACK ');
             console.log('ROLLBACK',e)
@@ -169,5 +169,4 @@ exports.getAdmin = function(req, res) {
         };
     })().catch(error => console.error(error.stack));
     
-    res.send("Test");
   };
