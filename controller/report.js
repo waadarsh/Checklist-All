@@ -88,7 +88,7 @@ function getTaskCountByStatus(pgp) {
 function getCompletedTaskRecords(pgp) {
     return pgp.any(`SELECT ch.chklst_name, ch.station_name, ch.total_no_instruction, th.created_dttm, th.updated_dttm
     FROM public.task_hdr th
-    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '90';`)
+    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '90' order by th.updated_dttm desc;`)
     .then(data => {
         return data;
     }).catch(error => {
@@ -99,7 +99,7 @@ function getCompletedTaskRecords(pgp) {
 function getInProgressTaskRecords(pgp) {
     return pgp.any(`SELECT ch.chklst_name, ch.station_name, ch.total_no_instruction, th.created_dttm, th.updated_dttm
     FROM public.task_hdr th
-    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '0';`)
+    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '0' order by th.updated_dttm desc;;`)
     .then(data => {
         //console.log(data);
         return data;
@@ -111,7 +111,7 @@ function getInProgressTaskRecords(pgp) {
 function getCancelledTaskRecords(pgp) {
     return pgp.any(`SELECT ch.chklst_name, ch.station_name, ch.total_no_instruction, th.created_dttm, th.updated_dttm
     FROM public.task_hdr th
-    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '99';`)
+    INNER JOIN public.chklst_hdr ch ON ch.chklst_id = th.chklst_id and th.status_code = '99' order by th.updated_dttm desc;;`)
     .then(data => {
         //console.log(data);
         return data;

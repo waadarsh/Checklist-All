@@ -21,6 +21,7 @@ app.use("/css", express.static("css"));
 app.use("/static", express.static("static"));
 app.use("/script", express.static("script"));
 app.use("/html", express.static("html"));
+app.use("/vendor", express.static("vendor"));
 
 app.use(bodyParser.json({ limit: '1024mb' }));
 app.use(bodyParser.text());

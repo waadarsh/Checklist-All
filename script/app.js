@@ -119,25 +119,56 @@ let createJSONObj = null;
 
 const publishButton = document.getElementById("publish-button");
 
-publishButton.addEventListener("click", function() {
+// publishButton.addEventListener("click", function() {
+//     let totalInstruction = checklistContainerObj.totalNoOfInstruction;
+//     createJSONObj = new CreateJSON(checklistContainerObj.templateName, checklistContainerObj.stationName, totalInstruction);
+//     console.log(createJSONObj.jsonText);
+//     let finalJSON = JSON.parse(createJSONObj.jsonText);
+
+//     try {
+//         const ourRequest = $.ajax({
+//             method: "POST",
+//             url: "http://localhost:3000/admin/adminPanel",
+//             contentType: "application/json",
+//             data: JSON.stringify(finalJSON)
+
+//         });
+//         ourRequest.then((response) => {
+//             console.log(response);
+//         })
+//     } catch (err) { console.error("err"); }
+
+//     console.log(finalJSON);
+// });
+
+var form = document.getElementById('frm');
+form.onsubmit = function (event) {
+
+    var xhr = new XMLHttpRequest();
     let totalInstruction = checklistContainerObj.totalNoOfInstruction;
     createJSONObj = new CreateJSON(checklistContainerObj.templateName, checklistContainerObj.stationName, totalInstruction);
     console.log(createJSONObj.jsonText);
     let finalJSON = JSON.parse(createJSONObj.jsonText);
 
-    try {
-        const ourRequest = $.ajax({
-            method: "POST",
-            url: "http://localhost:3000/admin/adminPanel",
-            contentType: "application/json",
-            data: JSON.stringify(finalJSON)
-
-        });
-        ourRequest.then((response) => {
-            console.log(response);
-        })
-    } catch (err) { console.error("err"); }
-
-    console.log(finalJSON);
-});
-
+    xhr.open('POST',"http://localhost:3000/admin/adminPanel")
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onload = function () {
+        if (this.status === 200) {
+            // console.log(this.responseText)
+            document.getElementById('det').innerHTML = this.responseText;
+        }
+        else {
+            console.log("Some error occurred")
+        }
+    }
+    xhr.send(JSON.stringify(finalJSON));
+    // window.alert('Succesfully Updated');
+    // window.location.href='./ic.html';
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            form.reset(); //reset form after AJAX success or do something else
+        }
+    }
+    //Fail the onsubmit to avoid page refresh.
+    return false; 
+}

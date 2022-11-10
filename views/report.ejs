@@ -21,7 +21,6 @@
             text-underline-position: under;
             text-decoration-thickness: 2.5px;
         }
-
     </style>
 
 </head>
@@ -50,7 +49,9 @@
         <div class="left floated fifteen wide column">
             <div class="ui segment" style="background-color: #EFEFEF; margin: 1%; height:fit-content">
                 <div style="margin-left: 1%">
-                    <h3>REPORTS</h3>
+                    <button class="ui inverted black basic button icon" onclick="history.back()"><i
+                        class="angle left black large icon"></i></button>
+                    <h3 style="display: inline;">REPORTS</h3>
                 </div>
                 <div class="ui top attached secondary pointing tabular menu">
                     <a class="active item" data-tab="Completed">Inspection Completed - <%= taskRecords[0][1].Completed
@@ -111,10 +112,106 @@
                             <% } %>
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="second">
-                    Second
+                    <% if(taskRecords[0][0].InProgress !=0) { %>
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Checklist Name</th>
+                                    <th>Station Name</th>
+                                    <th>No of Tasks</th>
+                                    <th>Created On</th>
+                                    <th>Completed On</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(var i=0; i < taskRecords[2].length; i++) { %>
+                                    <tr>
+                                        <td data-label="No">
+                                            <%= i+1 %>
+                                        </td>
+                                        <td data-label="Checklist Name">
+                                            <%= taskRecords[2][i].chklst_name %>
+                                        </td>
+                                        <td data-label="Station Name">
+                                            <%= taskRecords[2][i].station_name %>
+                                        </td>
+                                        <td data-label="No of Tasks">
+                                            <%= taskRecords[2][i].total_no_instruction %>
+                                        </td>
+                                        <td data-label="Created On">
+                                            <%= taskRecords[2][i].created_dttm %>
+                                        </td>
+                                        <td data-label="Completed On">
+                                            <%= taskRecords[2][i].updated_dttm %>
+                                        </td>
+                                        <td data-label="Details">
+                                            <form action="http://localhost:3000/admin/reportDetail" method="post">
+                                                <button class="item" style="background-color: white; border:none">
+                                                    <p style="margin: 2% 10%; color: #3366CC; cursor: pointer;">Details
+                                                    </p>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                        <% } else { %>
+                            No data available!!!!
+                            <% } %>
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="third">
-                    Third
+                    <% if(taskRecords[0][2].Cancelled !=0) { %>
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Checklist Name</th>
+                                    <th>Station Name</th>
+                                    <th>No of Tasks</th>
+                                    <th>Created On</th>
+                                    <th>Completed On</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(var i=0; i < taskRecords[3].length; i++) { %>
+                                    <tr>
+                                        <td data-label="No">
+                                            <%= i+1 %>
+                                        </td>
+                                        <td data-label="Checklist Name">
+                                            <%= taskRecords[3][i].chklst_name %>
+                                        </td>
+                                        <td data-label="Station Name">
+                                            <%= taskRecords[3][i].station_name %>
+                                        </td>
+                                        <td data-label="No of Tasks">
+                                            <%= taskRecords[3][i].total_no_instruction %>
+                                        </td>
+                                        <td data-label="Created On">
+                                            <%= taskRecords[3][i].created_dttm %>
+                                        </td>
+                                        <td data-label="Completed On">
+                                            <%= taskRecords[3][i].updated_dttm %>
+                                        </td>
+                                        <td data-label="Details">
+                                            <form action="http://localhost:3000/admin/reportDetail" method="post">
+                                                <button class="item" style="background-color: white; border:none">
+                                                    <p style="margin: 2% 10%; color: #3366CC; cursor: pointer;">Details
+                                                    </p>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                        <% } else { %>
+                            No data available!!!!
+                            <% } %>
                 </div>
             </div>
         </div>

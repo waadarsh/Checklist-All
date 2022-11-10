@@ -18,7 +18,7 @@
 </head>
 
 
-<body class="container">
+<body id="det" class="container">
     <div class="ui top attached text menu" style="height: 10%; background-color: #EFEFEF">
         <div class="item" style="width: 10%; margin-left: 2%;">
             <img src="/static/renault_nissan_logo.png" style="width: 100%">
@@ -29,7 +29,7 @@
             <span id="time"></span>
         </div>
         <div style="margin-top: 1%;margin-left: 2%;text-align: center">
-            <i class="huge user circle outline icon"></i><br>
+            <img src="../static/Avatar Icon.png"><br>
             <span><strong>ADMIN</strong></span>
         </div>
     </div>
@@ -106,8 +106,11 @@
 
 
     <div class="publish-json-container">
-        <button class="ui button big" id="publish-button"
-            style="background-color: #ff5f00; color:white">PUBLISH</button>
+        <form id="frm">
+            <button class="ui button big" id="publish-button"
+                style="background-color: #ff5f00; color:white">PUBLISH</button>
+        </form>
+
     </div>
 
     <script src="../script/app.js" type="module"></script>

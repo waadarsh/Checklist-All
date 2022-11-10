@@ -4,6 +4,10 @@ const path = require("path");
 var queryString = require("querystring");
 //const db = pgp('postgresql://postgres:nissan@localhost:5432/rnaipl');
 
+exports.getHome = function(req,res) {
+    res.render('Analytics')
+}
+
 exports.getlanding = function(req, res) {
 
     const db1 = pgp('postgresql://postgres:nissan@localhost:5432/rnaipl');
