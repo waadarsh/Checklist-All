@@ -7,16 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inspection Completed</title>
     <style>
+        body, html{
+            height: 100%;
+            margin: 0%;
+        }
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
             margin: auto;
             width: 30%;
             margin-top: 15%;
-            background-image: linear-gradient(#ff5f00, #e39318);
-            border: 1px;
-            border-radius: 5%;
+            background-image: linear-gradient(#2c5597, #0d2a5c);
+            border: 1%;
+            border-radius: 16px;
+            position: fixed;
+            top: 5%;
+            left: 35%;
+            
         }
+
 
         .container {
             background-color: white;
@@ -27,45 +36,59 @@
         .text {
             text-align: center;
             color: white;
+            font-size: large;
             /* padding: 1%; */
         }
 
         .success {
             text-align: center;
             padding: 5%;
-
+            margin-top: 20px;
         }
 
         .btn {
             text-align: center;
             width: 50%;
             padding: 5%;
-            background-color: #ff5f00;
+            background-color: #44b13f;
             color: white;
-            border: 1px;
-            border-radius: 3%;
+            border: 1px solid;
+            border-radius: 4px;
             font-size: large;
             cursor: pointer;
+
+        }
+
+        .image{
+            background-image: url(../static/inspectionCompleteImg.png);
+            background-size:cover;
+            background-repeat: no-repeat;
+            height: 100%;
+            margin-top: 0%;
+            background-position: center;
 
         }
     </style>
 </head>
 
 <body>
-    <div class="card">
-        <div class="success">
-            <img src="/static/Group 75299.svg">
-        </div>
-        <div class="text">
-            <h4>INSPECTION COMPLETED</h4>
-        </div>
+    <div class="image">
+        <div class="card">
+            <div class="success">
+                <img src="/static/Group 75299.svg">
+            </div>
+            <div class="text">
+                <h4>INSPECTION COMPLETED</h4>
+            </div>
 
-        <div class="container">
-            <form action="http://localhost:3000/operator/templateList" method="get">
-                <button id="btn" class="btn">OK</button>
-            </form>
+            <div class="container">
+                <form action="http://localhost:3000/operator/templateList" method="get">
+                    <button id="btn" class="btn">OK</button>
+                </form>
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspection Completed</title>
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            margin: auto;
+            width: 30%;
+            margin-top: 15%;
+            background-image: linear-gradient(#ff5f00, #e39318);
+            border: 1px;
+            border-radius: 5%;
+        }
+
+        .container {
+            background-color: white;
+            text-align: center;
+            padding: 7%;
+        }
+
+        .text {
+            text-align: center;
+            color: white;
+            /* padding: 1%; */
+        }
+
+        .success {
+            text-align: center;
+            padding: 5%;
+
+        }
+
+        .btn {
+            text-align: center;
+            width: 50%;
+            padding: 5%;
+            background-color: #ff5f00;
+            color: white;
+            border: 1px;
+            border-radius: 3%;
+            font-size: large;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="http://localhost:3000/landing/main" method="get">
+    <div class="card">
+        <div class="success">
+            <img src="/static/Group 75299.svg">
+        </div>
+        <div class="text">
+            <h4>TEMPLATE CREATED</h4>
+        </div>
+
+        <div class="container">
+            <button id="btn" class="btn">OK</button>
+            <!-- <form action="http://localhost:3000/operator/templateList" method="get">
+                <button id="btn" class="btn">OK</button>
+            </form> -->
+        </div>
+    </div>
+</form>
+</body>
+
+</html>

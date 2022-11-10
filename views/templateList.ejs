@@ -2,15 +2,15 @@
     <% if(templateList.length) { %>
 
         <div class="ui segment" style="background-color: #EFEFEF; margin: 1%; height:fit-content">
-            <div style="margin-left: 1%">
-                <h3>QUALITY CHECK TASK LIST</h3>
+            <div style="font-size: 25px;">
+                <strong>TEMPLATE LIST</strong>
             </div>
             <% templateList.forEach(function(template) { %>
                 <div class="ui segment"
-                    style="height: 15%; box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0), 0 10px 10px 0 rgba(0, 0, 0, 0.19); margin-top: 2%;">
+                    style="height: 15%; box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0), 0 10px 10px 0 rgba(0, 0, 0, 0.1); margin-top: 2%; margin-bottom: 2%;">
                     <div class="ui grid">
                         <div class="left floated six wide column">
-                            <h4>
+                            <h4 style="font-size: 20px;">
                                 <%= template.chklst_name %> | <%= template.station_name %>
                             </h4>
                             <h4>TOTAL TASK - <%= template.total_no_instruction %>
@@ -20,7 +20,7 @@
                             <form action="http://localhost:3000/operator/templateList" method="post">
                                 <input type="hidden" name="chklstId" value="<%= template.chklst_id %>">
                                 <button class="ui button"
-                                    style="float: right;background-color: #6FAF19; color: white; margin-top: 2%;">
+                                    style="float: right;background-color: #44b13f; color: white; margin-top: 2%; margin-bottom: 2%;">
                                     START INSPECTION
                                 </button>
                             </form>

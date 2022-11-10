@@ -1,0 +1,63 @@
+<%- include('AdminHeader'); -%>
+
+    <% if(landing.length) { %>
+        <div class="ui grid">
+            <div class="left floated one wide column">
+                <div class="ui vertical pointing segment" style="margin-top: 20%; width:fit-content; margin-left: 25%">
+                    <a class="active item">
+                        <form action="http://localhost:3000/landing/main" method="get">
+                            <button class="item" style="background-color: white; border:none">
+                                <img class="ui tiny image" src="../static/clipboard.png">
+                                <p style="margin: 2% 0; color: black;"><strong><u
+                                            style="text-decoration-style: solid; text-decoration-color: #ff5f00; text-underline-position:under; text-decoration-thickness: 20%;">CHECKLIST</u></strong>
+                                </p>
+                            </button>
+                        </form>
+                    </a><br>
+                    <form action="http://localhost:3000/admin/report" method="post">
+                        <button class="item" style="background-color: white; border:none; margin-top: 10%;">
+                            <img class="ui tiny image" src="../static/report.png">
+                            <p style="margin: 2% 0%; color: black;"><strong>REPORTS</strong></p>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="left floated fifteen wide column">
+
+                <div class="ui segment" style="background-color: #EFEFEF; margin: 1%; height:fit-content">
+                    <div style="margin-left: 1%">
+                        <button class="ui inverted black basic button icon" onclick="history.back() "><i
+                            class="angle left black large icon"></i></button>
+                        <h3 style="display: inline;">CHECKLISTS - <%= landing.length %>
+                        </h3>
+                        <form action="http://localhost:3000/landing/main" method="post">
+                            <button class="ui icon grey button" style="float: right; margin-top:-2.75%;">
+                                <i class="clipboard list  icon"></i>
+                                CREATE NEW CHECKLIST
+                            </button>
+                        </form>
+                    </div>
+
+                    <% landing.forEach(function(template) { %>
+                        <div class="ui segment"
+                            style="height: 15%; box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0), 0 10px 10px 0 rgba(0, 0, 0, 0.19); margin-top: 2%;">
+                            <div class="ui grid">
+                                <div class="left floated six wide column">
+                                    <h4>
+                                        <%= template.chklst_name %> | <%= template.station_name %>
+                                    </h4>
+                                    <h4>TOTAL TASK - <%= template.total_no_instruction %>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% } else { %>
+                                No templates available!!!!
+                                <% } %>
+                </div>
+
+            </div>
+        </div>
+        <%- include('footer') -%>
