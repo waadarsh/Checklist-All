@@ -103,7 +103,7 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <% var res = (parseFloat(taskRecords[0][1].Completed)/(parseFloat(taskRecords[0][1].Completed) + parseFloat(taskRecords[0][0].InProgress)))*100  %> 
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= res %>% </div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= res.toFixed(2) %>% </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
