@@ -18,6 +18,8 @@
             font-family: 'Poppins', Arial, Helvetica, sans-serif;
         }
     </style>
+    <!-- Page level plugins -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
 
 </head>
 
@@ -42,7 +44,7 @@
             <span><strong>ADMIN</strong></span>
         </div>
     </nav>
-    
+
     <div class="container-fluid" style="margin-top: 1%;">
 
         <div class="row">
@@ -66,8 +68,9 @@
 
             </div>
 
-            <div class="col-11" >
-                <div class="container-fluid" style="background-color: #EFEFEF; margin-left: -2%; border: 1% solid; border-radius: 5px;" >
+            <div class="col-11">
+                <div class="container-fluid"
+                    style="background-color: #EFEFEF; margin-left: -2%; border: 1% solid; border-radius: 5px;">
                     <br>
                     <div class="row">
                         <!-- CheckList Templates Card Example -->
@@ -77,8 +80,9 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Checklist Templates</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">52</div>
+                                                Checklist Templates
+                                            </div> 
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <%= parseInt(taskRecords[0][1].Completed) + parseInt(taskRecords[0][0].InProgress) %>  </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-list-alt fa-2x text-gray-300"></i>
@@ -125,7 +129,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Tasks ToDo</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">239</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= taskRecords[0][0].InProgress %> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-cog fa-2x text-gray-300"></i>
@@ -137,47 +141,42 @@
                     </div>
 
                     <!-- Content Row -->
-                <div class="row">
+                    <div class="row">
 
-                    <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-8 col-lg-7">
 
-                        <!-- Bar Chart -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Total Tasks</h6>
+                            <!-- Bar Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Total Tasks</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart"></canvas>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <div class="chart-bar">
-                                    <canvas id="myBarChart"></canvas>
+
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Tasks for Today</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <!-- Donut Chart -->
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Tasks for Today</h6>
-                            </div>
-                            <!-- Card Body -->
-                            <div class="card-body">
-                                <div class="chart-pie pt-4">
-                                    <canvas id="myPieChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-                </div>
-
-
-
-
-                
 
             </div>
 
@@ -198,6 +197,53 @@
     </div>
     <!-- End of Page Wrapper -->
 
+    <script>
+        
+            // Set new default font family and font color to mimic Bootstrap's default styling
+    //Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    //Chart.defaults.global.defaultFontColor = '#858796';
+    
+    // Pie Chart Example
+    var ctx = document.getElementById("myPieChart");
+    let recordsCompleted = parseInt('<%- taskRecords[0][1].Completed %>');
+    let recordsInProgress = parseInt('<%- taskRecords[0][0].InProgress %>');
+    let recordsCancelled = parseInt('<%- taskRecords[0][2].Cancelled %>');
+    var myPieChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ["In-Progress", "Completed", "Cancelled"],
+        datasets: [{
+          data: [recordsInProgress, recordsCompleted , recordsCancelled],
+          backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+          hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        title: {
+            display: true,
+            text: "Tasks for Today"
+          },
+        legend: {
+          display: true
+        },
+        cutoutPercentage: 80,
+      },
+    });
+
+    </script>
+
 
 
 
@@ -215,7 +261,7 @@
     <script src="../vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../script/chart-pie-demo.js"></script>
+    <!-- <script src="../script/chart-pie-demo.js"></script> -->
     <script src="../script/chart-bar-demo.js"></script>
 
 </body>
