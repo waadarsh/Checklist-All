@@ -29,7 +29,7 @@
             </strong>
             &ensp;
             <strong>
-                <%= new Date().toLocaleTimeString()%>
+                <span id="time"></span>
             </strong>
             
         </div>
@@ -38,3 +38,9 @@
             <span><strong>ADMIN</strong></span>
         </div>
     </div>
+    <script>
+        var date = setInterval(() => {
+            const element = document.getElementById('time');
+            element.innerHTML = new Date().toLocaleTimeString();
+        }, 1000);
+    </script>

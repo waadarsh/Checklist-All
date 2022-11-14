@@ -220,6 +220,10 @@
 
     <script>
         $('.menu .item').tab();
+        var date = setInterval(() => {
+            const element = document.getElementById('time');
+            element.innerHTML = new Date().toLocaleTimeString();
+        }, 1000);
     </script>
 
 </html>

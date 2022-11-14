@@ -119,7 +119,10 @@
     <script src="../script/createjson.js" type="module"></script>
     <script>
         document.getElementById("date").innerHTML = new Date().toLocaleDateString();
-        document.getElementById("time").innerHTML = new Date().toLocaleTimeString();
+        var date = setInterval(() => {
+            const element = document.getElementById('time');
+            element.innerHTML = new Date().toLocaleTimeString();
+        }, 1000);
     </script>
 
 </body>
