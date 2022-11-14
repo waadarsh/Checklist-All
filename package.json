@@ -1,6 +1,6 @@
 {
   "name": "checklist-all",
-  "version": "1.6.5",
+  "version": "3.0.0",
   "description": "image upload",
   "main": "index.js",
   "scripts": {
