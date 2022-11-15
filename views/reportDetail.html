@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report Detail</title>
     <link rel="stylesheet" type="text/css" href="/css/templateList.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.0/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.0/dist/semantic.min.js"></script>
+    <script src="../cdn/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../cdn/fomantic.min.css">
+    <script src="../cdn/fomantic.min.js"></script>
 </head>
 <!-- <body> -->
 <!-- <div class = "header">
@@ -30,7 +30,7 @@
             <span id="time"></span>
         </div>
         <div style="margin-top: 1%;margin-left: 2%;text-align: center">
-            <i class="huge user circle outline icon"></i><br>
+            <img src="../static/Avatar Icon.png"><br>
             <span><strong>ADMIN</strong></span>
         </div>
     </div>
@@ -125,7 +125,10 @@
     </div>
     <script>
         document.getElementById("date").innerHTML = new Date().toLocaleDateString();
-        document.getElementById("time").innerHTML = new Date().toLocaleTimeString();
+        var time = setInterval(() => {
+            const element = document.getElementById('time');
+            element.innerHTML = new Date().toLocaleTimeString();
+        }, 1000);
     </script>
 
 </body>
