@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordian</title>
+    <script src="../cdn/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../cdn/fomantic.min.css">
+    <script src="../cdn/fomantic.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+<body>
+    <div style="margin-top: 20px" class="ui container">
+        <div class="ui styled fluid accordion">
+            <div class="active title">
+                <i class="dropdown icon"></i>
+                What is Geeksforgeeks?
+            </div>
+            <div class="active content">
+                <p>
+                    Geeksforgeeks is a platform where
+                    you can find solution to any king
+                    of computer science related problem
+                </p>
+            </div>
+            <div class="title">
+                <i class="dropdown icon"></i>
+                What is Internshala?
+            </div>
+            <div class="content">
+                <p>
+                    It's an online platform which
+                    provide opportunity for student
+                    to get internship.
+                </p>
+            </div>
+            <div class="title">
+                <i class="dropdown icon"></i>
+                What is Semantic-ui:
+            </div>
+            <div class="content">
+                <p>
+                    It's a really cool framework
+                    by which you can do cool stuff
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.ui.accordion').accordion();
+        var p_active = $( ".ui.accordion" ).accordion( "option", "active" );
+        console.log(p_active);
+        for ( var i = 0; i <3;i++) {
+           $( ".accordion" ).accordion( "option", "active", i );
+        }
+    </script>
+</body>
+</html>

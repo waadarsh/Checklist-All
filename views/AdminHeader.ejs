@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Main</title>
+    <link rel="stylesheet" type="text/css" href="/css/templateList.css">
+    <script src="../cdn/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../cdn/fomantic.min.css">
+    <script src="../cdn/fomantic.min.js"></script>
+</head>
+<!-- <body> -->
+<!-- <div class = "header">
+        <img class = "logo" src="/static/renault_nissan_logo.png">
+        <h4 class = "pipe"> > </h4>
+        <h4 class="product-name">Quality Inspect</h4>
+    </div> -->
+
+<body class="container">
+    <div class="ui top attached text menu" style="height: 10%; background-color: #EFEFEF">
+        <div class="item" style="width: 10%; margin-left: 3%;">
+            <img src="/static/renault_nissan_logo.png" style="width: 100%">
+        </div>
+        <div style="margin-left:65%; margin-top: 2.5%;">
+            <strong>
+                <%= new Date().toLocaleDateString()%>
+            </strong>
+            &ensp;
+            <strong>
+                <span id="time"></span>
+            </strong>
+            
+        </div>
+        <div style="margin-top: 1%;margin-left: 2%;text-align: center">
+            <img src="../static/Avatar Icon.png"><br>
+            <span><strong>ADMIN</strong></span>
+        </div>
+    </div>
+    <script>
+        var date = setInterval(() => {
+            const element = document.getElementById('time');
+            element.innerHTML = new Date().toLocaleTimeString();
+        }, 1000);
+    </script>

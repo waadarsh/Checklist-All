@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/templateList.css">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <!-- Page level plugins -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Begin Page Content -->
+    <nav class="navbar navbar-expand" style="height: 10%; background-color: #EFEFEF;color: black; ">
+        <div class="item" style="width: 10%; margin-left: 3%;">
+            <img src="/static/renault_nissan_logo.png" style="width: 100%">
+        </div>
+        <div style="margin-left:65%; margin-top: 1%;">
+            <strong>
+                <%= new Date().toLocaleDateString()%>
+            </strong>
+            &ensp;
+            <strong>
+                <span id="time"></span>
+            </strong>
+
+        </div>
+        <div style="margin-top: 1%;margin-left: 2%;text-align: center">
+            <img src="../static/Avatar Icon.png"><br>
+            <span><strong>ADMIN</strong></span>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top: 1%;">
+
+        <div class="row">
+            <div class="col-1" style="height: 100%;">
+
+                <a class="item">
+                    <form action="http://localhost:3000/landing/main" method="get">
+                        <button class="item" style="background-color: white; border:none">
+                            <img src="../static/clipboard.png" height="70px">
+                            <p style="margin: 5% 0; color: black;"><strong>CHECKLIST</strong>
+                            </p>
+                        </button>
+                    </form>
+                </a><br>
+                <form action="http://localhost:3000/admin/report" method="post">
+                    <button class="item" style="background-color: white; border:none; margin-top: 10%;">
+                        <img class="ui tiny image" src="../static/report.png" height="70px">
+                        <p style="margin: 5% 0; color: black;"><strong>REPORTS</strong></p>
+                    </button>
+                </form>
+
+            </div>
+
+            <div class="col-11">
+                <div class="container-fluid"
+                    style="background-color: #EFEFEF; margin-left: -2%; border: 1% solid; border-radius: 5px;">
+                    <br>
+                    <div class="row">
+                        <!-- CheckList Templates Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Checklist Templates
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <%= parseInt(taskRecords[0][1].Completed) +
+                                                    parseInt(taskRecords[0][0].InProgress) %>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-list-alt fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tasks Progress Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <% var
+                                                        res=(parseFloat(taskRecords[0][1].Completed)/(parseFloat(taskRecords[0][1].Completed)
+                                                        + parseFloat(taskRecords[0][0].InProgress)))*100 %>
+                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                            <%= res.toFixed(2) %>%
+                                                        </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tasks todo Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Tasks ToDo</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <%= taskRecords[0][0].InProgress %>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cog fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Bar Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Total Tasks</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Donut Chart -->
+
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Tasks for Today</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Completed
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> In-Progress
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Cancelled
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <br>
+
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <script>
+        var date = setInterval(() => {
+            const element = document.getElementById('time');
+            element.innerHTML = new Date().toLocaleTimeString();
+        }, 1000);
+
+        //progress bar
+        var bar = document.querySelector(".progress-bar");
+        var progressBarData = parseFloat('<%- res %>');
+        bar.style.width = progressBarData + "%";
+
+        // Pie Chart Example
+        var ctx = document.getElementById("myPieChart");
+        let recordsCompleted = parseInt('<%- taskRecords[0][1].Completed %>');
+        let recordsInProgress = parseInt('<%- taskRecords[0][0].InProgress %>');
+        let recordsCancelled = parseInt('<%- taskRecords[0][2].Cancelled %>');
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["In-Progress", "Completed", "Cancelled"],
+                datasets: [{
+                    data: [recordsInProgress, recordsCompleted, recordsCancelled],
+                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                    hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+                title: {
+                    display: false,
+                    text: "Tasks for Today"
+                },
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 80,
+            },
+        });
+
+        // Set new default font family and font color to mimic Bootstrap's default styling
+        Chart.defaults.global.defaultFontColor = '#858796';
+
+        function number_format(number, decimals, dec_point, thousands_sep) {
+            // *     example: number_format(1234.56, 2, ',', ' ');
+            // *     return: '1 234,56'
+            number = (number + '').replace(',', '').replace(' ', '');
+            var n = !isFinite(+number) ? 0 : +number,
+                prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+                sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+                dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+                s = '',
+                toFixedFix = function (n, prec) {
+                    var k = Math.pow(10, prec);
+                    return '' + Math.round(n * k) / k;
+                };
+            // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+            s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+            if (s[0].length > 3) {
+                s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+            }
+            if ((s[1] || '').length < prec) {
+                s[1] = s[1] || '';
+                s[1] += new Array(prec - s[1].length + 1).join('0');
+            }
+            return s.join(dec);
+        }
+
+        // Bar Chart Example
+
+        let taskLength = '<%- taskRecords[2].length %> '
+        console.log(taskLength);
+        let dttm =  '<%- taskRecords[2][0].created_dttm %>'.slice(0,3);
+        console.log(dttm);
+
+        var ctx = document.getElementById("myBarChart");
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                datasets: [{
+                    label: "Total Tasks",
+                    backgroundColor: "#4e73df",
+                    hoverBackgroundColor: "#2e59d9",
+                    borderColor: "#4e73df",
+                    data: [45, 35, 20, 15, 28],
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: 'month'
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 6
+                        },
+                        maxBarThickness: 25,
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            max: 50,
+                            maxTicksLimit: 10,
+                            padding: 10,
+                            // Include a dollar sign in the ticks
+                            callback: function (value, index, values) {
+                                return '' + number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }],
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    titleMarginBottom: 10,
+                    titleFontColor: '#6e707e',
+                    titleFontSize: 14,
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function (tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                },
+            }
+        });
+
+
+    </script>
+
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+    
+    <!-- Page level custom scripts -->
+    <!-- <script src="../script/chart-pie-demo.js"></script> -->
+    <!-- <script src="../script/chart-bar-demo.js"></script> -->
+
+</body>
+
+</html>

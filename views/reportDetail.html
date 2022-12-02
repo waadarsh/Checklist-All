@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Detail</title>
+    <link rel="stylesheet" type="text/css" href="/css/templateList.css">
+    <script src="../cdn/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../cdn/fomantic.min.css">
+    <script src="../cdn/fomantic.min.js"></script>
+</head>
+<!-- <body> -->
+<!-- <div class = "header">
+        <img class = "logo" src="/static/renault_nissan_logo.png">
+        <h4 class = "pipe"> > </h4>
+        <h4 class="product-name">Quality Inspect</h4>
+    </div> -->
+
+<body class="container">
+    <!-- Header -->
+    <div class="ui top attached text menu" style="height: 10%; background-color: #EFEFEF">
+        <div class="item" style="width: 10%; margin-left: 3%;">
+            <img src="/static/renault_nissan_logo.png" style="width: 100%">
+        </div>
+        <div style="margin-left:65%; margin-top: 2.5%;">
+            <span id="date"></span>
+            &ensp;
+            <span id="time"></span>
+        </div>
+        <div style="margin-top: 1%;margin-left: 2%;text-align: center">
+            <img src="../static/Avatar Icon.png"><br>
+            <span><strong>ADMIN</strong></span>
+        </div>
+    </div>
+    <!-- Instruction 1 -->
+    <div class="ui segment" style="margin: 1% 7%;">
+        <div class="ui grid">
+            <div class="left floated four wide column">
+                <strong>TEMPLATE NAME | STATION NAME</strong><br>
+                <strong>STATUS : INSPECTION COMPLETED</strong>
+            </div>
+            <div class="right floated four wide column">
+                <strong>ASSIGNED ON : 12-11-22 | NO DUE DATE</strong><br>
+                <strong>ASSIGNED TO : OPERATOR</strong>
+            </div>
+        </div>
+        <div class="ui segment">
+            <div class="ui grid">
+                <div class="six wide column">
+                    <strong>PROCESS NAME : HR10</strong>
+                </div>
+                <div class="six wide column">
+                    <strong>CHECK LOCATION : ASSEMBLY STATION 1</strong>
+                </div>
+                <div class="four wide column">
+                    <strong>1/2</strong>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <strong>CHECK DETAILS</strong><br>
+            <strong>Check the cast quality</strong><br><br>
+            <strong>REFERENCE DIAGRAM</strong><br>
+            <img class="ui centered medium image" src="../static/ReportImage.jpg" style="border: 0.5px solid black"><br>
+            <strong>MARK QUALITY RESULTS HERE</strong><br>
+            <table class="ui celled table" style="text-align: center; ">
+                <thead>
+                    <tr>
+                        <th class="five wide column">MC</th>
+                        <th class="five wide column">QA</th>
+                        <th class="five wide column">JUDGEMENT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Name">20</td>
+                        <td data-label="Age">30</td>
+                        <td data-label="Job">OK</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Instruction 2 -->
+        <div class="ui segment">
+            <div class="ui grid">
+                <div class="six wide column">
+                    <strong>PROCESS NAME : HR20</strong>
+                </div>
+                <div class="six wide column">
+                    <strong>CHECK LOCATION : ASSEMBLY STATION 2</strong>
+                </div>
+                <div class="four wide column">
+                    <strong>2/2</strong>
+                </div>
+            </div>
+
+            <div class="ui divider"></div>
+
+            <strong>CHECK DETAILS</strong><br>
+            <strong>Check the build quality</strong><br><br>
+            <strong>REFERENCE DIAGRAM</strong><br>
+            <img class="ui centered medium image" src="../static/ReportImage2.jpeg"
+                style="border: 0.5px solid black"><br>
+            <strong>MARK QUALITY RESULTS HERE</strong><br>
+            <table class="ui celled table" style="text-align: center; ">
+                <thead>
+                    <tr>
+                        <th class="five wide column">MC</th>
+                        <th class="five wide column">QA</th>
+                        <th class="five wide column">JUDGEMENT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Name">40</td>
+                        <td data-label="Age">60</td>
+                        <td data-label="Job">NG</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        document.getElementById("date").innerHTML = new Date().toLocaleDateString();
+        var time = setInterval(() => {
+            const element = document.getElementById('time');
+            element.innerHTML = new Date().toLocaleTimeString();
+        }, 1000);
+    </script>
+
+</body>
